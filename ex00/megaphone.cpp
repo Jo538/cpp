@@ -1,12 +1,13 @@
 #include <iostream>
 
-int touppercase(std::string str)
+int touppercase(const std::string &str)
 {
-	int i = 0;
+	std::size_t i = 0;
 
 	while (i < str.length())
 	{
-		std::cout << (char)std::toupper(str.at(i));
+		char c = static_cast<char>(std::toupper(str[i]));
+		std::cout << c;
 		i++;
 	}
 	return (0);
