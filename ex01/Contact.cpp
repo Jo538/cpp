@@ -1,13 +1,8 @@
 #include "Contact.hpp"
 
-void Contact::print()
-{
-	std::cout << first_name << std::endl;
-	std::cout << last_name << std::endl;
-	std::cout << nickname << std::endl;
-	std::cout << phone_number << std::endl;
-	std::cout << darkest_secret << std::endl;	
-}
+std::string Contact::getFirstName() const { return first_name; }
+std::string Contact::getLastName() const { return last_name; }
+std::string Contact::getNickname() const { return nickname; }
 
 void Contact::fill()
 {

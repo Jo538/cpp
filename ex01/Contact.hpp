@@ -13,7 +13,9 @@ class Contact
 	std::string darkest_secret;
  public:
 	void fill();
-	void print();
+	std::string getFirstName() const;
+	std::string getLastName() const;
+	std::string getNickname() const;
 };
 
 #endif

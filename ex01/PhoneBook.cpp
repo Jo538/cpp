@@ -15,3 +15,12 @@ void PhoneBook::add_contact()
 	contact[index].fill();
 	update_index();
 }
+
+void PhoneBook::print()
+{
+	std::cout << index << " ";
+	std::cout << contact[0].getFirstName() << " ";
+	std::cout << contact[0].getLastName() << " ";
+	std::cout << contact[0].getNickname() << " ";
+}
+

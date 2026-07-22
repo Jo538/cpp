@@ -12,7 +12,8 @@ class PhoneBook
 	void update_index();
  public:
 	PhoneBook();
-	void add_contact();	
+	void add_contact();
+	void print();
 };
 
 #endif
