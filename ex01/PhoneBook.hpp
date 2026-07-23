@@ -2,14 +2,17 @@
 # define PHONEBOOK_HPP
 
 # include "Contact.hpp"
+# include <iomanip>
 
 class PhoneBook
 {
  private:
-	static const int MAX_COUNT = 8;
 	int index;
+	int fills;
+	static const int MAX_COUNT = 8;
 	Contact contact[MAX_COUNT];
 	void update_index();
+	void update_fills();
  public:
 	PhoneBook();
 	void add_contact();
