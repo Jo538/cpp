@@ -55,6 +55,7 @@ void PhoneBook::print_contact()
 
 	std::cout << "Enter index of the contact to display\n";
 	std::cin >> index;
+	std::cin.ignore(1, '\n');
 	while (1)
 	{
 		if (index < 0 || index >= fills)

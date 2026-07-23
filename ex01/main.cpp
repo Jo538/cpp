@@ -12,6 +12,7 @@ int main()
 	
 		std::string cmd;
 		std::cin >> cmd;
+		std::cin.ignore(1, '\n');
 
 		if (cmd == "EXIT")
 			return (0);

@@ -6,20 +6,34 @@ std::string Contact::getNickname() const { return nickname; }
 std::string Contact::getPhoneNumber() const { return phone_number; }
 std::string Contact::getDarkestSecret() const { return darkest_secret; }
 
+static void fill_cell(std::string &cell)
+{
+	while (1)
+	{
+		std::getline(std::cin, cell);
+		if (cell.empty())
+		{
+			std::cout << "Enter valid contact info\n";
+			continue ;
+		}
+		break ;		
+	}
+}
+
 void Contact::fill()
 {
 	std::cout << "First name: ";
-	std::cin >> first_name;
+	fill_cell(first_name);
 
 	std::cout << "Last name: ";
-	std::cin >> last_name;
-
+	fill_cell(last_name);
+	
 	std::cout << "Nickname: ";
-	std::cin >> nickname;
-
+	fill_cell(nickname);
+	
 	std::cout << "Phone number: ";
-	std::cin >> phone_number;
-
+	fill_cell(phone_number);
+	
 	std::cout << "Darkest secret: ";
-	std::cin >> darkest_secret;	
+	fill_cell(darkest_secret);
 }
