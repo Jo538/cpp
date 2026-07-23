@@ -23,30 +23,52 @@ void PhoneBook::add_contact()
 	update_fills();
 }
 
+static void print_cell(const std::string &cell)
+{
+	if (cell.length() > 10)
+		std::cout << cell.substr(0, 9) + ".";
+	else
+		std::cout << std::setw(10) << cell;
+}
+
 void PhoneBook::print()
 {
 	int i = 0;
-	std::string str;
 
 	while (i < fills)
 	{
 		std::cout << std::setw(10) << i << "|";
-		if (contact[i].getFirstName().length() > 10)
-			std::cout << (str = contact[i].getFirstName().substr(0, 9) + ".");
-		else
-			std::cout << std::setw(10) <<  contact[i].getFirstName();
+		print_cell(contact[i].getFirstName());
 		std::cout << "|";
-		if (contact[i].getLastName().length() > 10)
-			std::cout << (str = contact[i].getLastName().substr(0, 9) + ".");
-		else
-			std::cout << std::setw(10) <<  contact[i].getLastName();
+		print_cell(contact[i].getLastName());
 		std::cout << "|";
-		if (contact[i].getNickname().length() > 10)
-			std::cout << (str = contact[i].getNickname().substr(0, 9) + ".") << std::endl;
-		else
-			std::cout << std::setw(10) <<  contact[i].getNickname() << std::endl;
+		print_cell(contact[i].getNickname());
+		std::cout << std::endl;
 		i++;
 	}
 
+}
+
+void PhoneBook::print_contact()
+{
+	int index;
+
+	std::cout << "Enter index of the contact to display\n";
+	std::cin >> index;
+	while (1)
+	{
+		if (index < 0 || index >= fills)
+		{
+			std::cout << "Please enter a valid index\n";
+			std::cin >> index;
+			continue ;
+		}
+		std::cout << contact[index].getFirstName() << std::endl;
+		std::cout << contact[index].getLastName() << std::endl;
+		std::cout << contact[index].getNickname() << std::endl;
+		std::cout << contact[index].getPhoneNumber() << std::endl;
+		std::cout << contact[index].getDarkestSecret() << std::endl;
+		break ;
+	}
 }
 

@@ -17,6 +17,7 @@ class PhoneBook
 	PhoneBook();
 	void add_contact();
 	void print();
+	void print_contact();
 };
 
 #endif

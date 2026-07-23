@@ -20,6 +20,9 @@ int main()
 			phonebook.add_contact();
 
 		if (cmd == "SEARCH")
+		{
 			phonebook.print();
+			phonebook.print_contact();
+		}
 	}
 }
