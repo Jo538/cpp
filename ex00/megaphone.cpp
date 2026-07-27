@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 17:27:48 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/27 11:39:08 by admin            ###   ########.fr       */
+/*   Updated: 2026/07/27 11:45:05 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int touppercase(const std::string &str)
 
 	while (i < str.length())
 	{
-		char c = static_cast<char>(std::toupper(str[i]));
+		char c = static_cast<char>(std::toupper(static_cast<unsigned char>(str[i])));
 		std::cout << c;
 		i++;
 	}
