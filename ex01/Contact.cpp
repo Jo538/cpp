@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/27 19:38:50 by admin             #+#    #+#             */
+/*   Updated: 2026/07/27 19:38:52 by admin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 #include <iostream>
 
-std::string Contact::getFirstName() const { return first_name; }
-std::string Contact::getLastName() const { return last_name; }
-std::string Contact::getNickname() const { return nickname; }
-std::string Contact::getPhoneNumber() const { return phone_number; }
-std::string Contact::getDarkestSecret() const { return darkest_secret; }
+const std::string &Contact::getFirstName() const { return first_name; }
+const std::string &Contact::getLastName() const { return last_name; }
+const std::string &Contact::getNickname() const { return nickname; }
+const std::string &Contact::getPhoneNumber() const { return phone_number; }
+const std::string &Contact::getDarkestSecret() const { return darkest_secret; }
 
-static int fill_cell(std::string &cell)
+static bool fill_cell(std::string &cell)
 {
-	while (1)
+	while (true)
 	{
 		if(!std::getline(std::cin, cell))
-			return 1;
+			return false;
 		if (cell.empty())
 		{
 			std::cout << "Enter valid contact info\n";
@@ -20,10 +32,10 @@ static int fill_cell(std::string &cell)
 		}
 		break ;		
 	}
-	return 0;
+	return true;
 }
 
-int Contact::fill()
+bool Contact::fill()
 {
 	int i = 0;
 	std::string prompts[5] = {"First name: ", "Last name: ", "Nickname: ", "Phone number: ", "Darkest secret: "};
@@ -32,9 +44,9 @@ int Contact::fill()
 	while (i < 5)
 	{
 		std::cout << prompts[i];
-		if (fill_cell(*fields[i]))
-			return 1;
+		if (!fill_cell(*fields[i]))
+			return false;
 		i++;
 	}
-	return 0;
+	return true;
 }
