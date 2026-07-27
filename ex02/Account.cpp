@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 14:47:57 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/27 11:26:39 by admin            ###   ########.fr       */
+/*   Updated: 2026/07/27 19:57:39 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ bool Account::makeWithdrawal( int withdrawal )
 	std::cout << " index:" << _accountIndex;
 	std::cout << ";p_amount:" << _amount;
 
-	if ((_amount - withdrawal < 0))
+	if (_amount < withdrawal)
 	{
 		std::cout << ";withdrawal:refused\n";
-		return true;	
+		return false;	
 	}
 	_amount-=withdrawal;
 	_nbWithdrawals++;
@@ -107,12 +107,8 @@ bool Account::makeWithdrawal( int withdrawal )
 
 int Account::checkAmount( void ) const { return _amount;}
 
-Account::Account(int initial_deposit)
+Account::Account(int initial_deposit) : _accountIndex(_nbAccounts), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
 {
-	_amount = initial_deposit;
-	_accountIndex = _nbAccounts;
-	_nbDeposits = 0;
-	_nbWithdrawals = 0;
 	_totalAmount += initial_deposit;
 	_nbAccounts++;
 
