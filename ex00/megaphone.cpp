@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 17:27:48 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/21 17:27:51 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/07/27 11:39:08 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string>
+#include <cctype>
 #include <iostream>
 
 int touppercase(const std::string &str)
