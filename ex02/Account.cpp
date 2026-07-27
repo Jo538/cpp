@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/24 14:47:57 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/26 14:15:25 by admin            ###   ########.fr       */
+/*   Updated: 2026/07/27 11:26:39 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ bool Account::makeWithdrawal( int withdrawal )
 	std::cout << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 
 	_totalAmount-=withdrawal;
-	_totalNbWithdrawals--;
+	_totalNbWithdrawals++;
 
 	return true;
 }
