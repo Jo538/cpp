@@ -1,4 +1,5 @@
 #include "Contact.hpp"
+#include <iostream>
 
 std::string Contact::getFirstName() const { return first_name; }
 std::string Contact::getLastName() const { return last_name; }
@@ -6,11 +7,12 @@ std::string Contact::getNickname() const { return nickname; }
 std::string Contact::getPhoneNumber() const { return phone_number; }
 std::string Contact::getDarkestSecret() const { return darkest_secret; }
 
-static void fill_cell(std::string &cell)
+static int fill_cell(std::string &cell)
 {
 	while (1)
 	{
-		std::getline(std::cin, cell);
+		if(!std::getline(std::cin, cell))
+			return 1;
 		if (cell.empty())
 		{
 			std::cout << "Enter valid contact info\n";
@@ -18,22 +20,21 @@ static void fill_cell(std::string &cell)
 		}
 		break ;		
 	}
+	return 0;
 }
 
-void Contact::fill()
+int Contact::fill()
 {
-	std::cout << "First name: ";
-	fill_cell(first_name);
+	int i = 0;
+	std::string prompts[5] = {"First name: ", "Last name: ", "Nickname: ", "Phone number: ", "Darkest secret: "};
+	std::string *fields[5] = {&first_name, &last_name, &nickname, &phone_number, &darkest_secret};
 
-	std::cout << "Last name: ";
-	fill_cell(last_name);
-	
-	std::cout << "Nickname: ";
-	fill_cell(nickname);
-	
-	std::cout << "Phone number: ";
-	fill_cell(phone_number);
-	
-	std::cout << "Darkest secret: ";
-	fill_cell(darkest_secret);
+	while (i < 5)
+	{
+		std::cout << prompts[i];
+		if (fill_cell(*fields[i]))
+			return 1;
+		i++;
+	}
+	return 0;
 }

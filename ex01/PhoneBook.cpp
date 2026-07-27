@@ -1,4 +1,6 @@
 #include "PhoneBook.hpp"
+#include <iomanip>
+#include <iostream>
 
 PhoneBook::PhoneBook() : index(0), fills(0) {} 
 
@@ -16,11 +18,13 @@ void PhoneBook::update_fills()
 		fills++;
 }
 
-void PhoneBook::add_contact()
+int PhoneBook::add_contact()
 {
-	contact[index].fill();
+	if (contact[index].fill())
+		return 1;
 	update_index();
 	update_fills();
+	return 0;
 }
 
 static void print_cell(const std::string &cell)
@@ -56,7 +60,7 @@ void PhoneBook::print_contact()
 	std::cout << "Enter index of the contact to display\n";
 	std::cin >> index;
 	std::cin.ignore(1, '\n');
-	while (1)
+	while (std::cin)
 	{
 		if (index < 0 || index >= fills)
 		{

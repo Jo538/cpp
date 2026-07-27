@@ -1,7 +1,7 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include <iostream>
+# include <string>
 
 class Contact
 {
@@ -12,7 +12,7 @@ private:
 	std::string phone_number;
 	std::string darkest_secret;
 public:
-	void fill();
+	int fill();
 	std::string getFirstName() const;
 	std::string getLastName() const;
 	std::string getNickname() const;

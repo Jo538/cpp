@@ -5,20 +5,23 @@
 int main()
 {
 	PhoneBook phonebook;
+	std::string cmd;
 
-	while (true)
+	while (1)
 	{
 		std::cout << "Please enter 1 of the 3 commands: ADD, SEARCH, EXIT\n";
-	
-		std::string cmd;
-		std::cin >> cmd;
+		if (!(std::cin >> cmd))
+			return 1;
 		std::cin.ignore(1, '\n');
 
 		if (cmd == "EXIT")
 			return (0);
 
 		if (cmd == "ADD")
-			phonebook.add_contact();
+		{
+			if (phonebook.add_contact())
+				return 1;
+		}
 
 		if (cmd == "SEARCH")
 		{
