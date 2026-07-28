@@ -5,28 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/28 10:35:25 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/28 16:11:49 by jchartie         ###   ########.fr       */
+/*   Created: 2026/07/28 12:53:18 by jchartie          #+#    #+#             */
+/*   Updated: 2026/07/28 16:12:23 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-# include <string>
+#include <string>
 
 class Zombie
 {
 private:
-	std::string name;	
-
-public:	
-	Zombie( std::string name );
-	~Zombie( void );
-	void announce( void );
+	int 		_index;
+	std::string _name;
+public:
+	Zombie();
+	~Zombie();
+	void announce() const;
+	void setName(std::string name);
+	void setIndex(int index);
 };
 
-void randomChump( std::string name);
-Zombie* newZombie(std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 #endif

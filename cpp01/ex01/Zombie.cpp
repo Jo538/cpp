@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/28 10:35:25 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/28 16:11:49 by jchartie         ###   ########.fr       */
+/*   Created: 2026/07/28 13:03:03 by jchartie          #+#    #+#             */
+/*   Updated: 2026/07/28 16:03:18 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include <iostream>
+#include "Zombie.hpp"
 
-# include <string>
+Zombie::Zombie() { }
 
-class Zombie
+Zombie::~Zombie()
 {
-private:
-	std::string name;	
+	std::cout << _index << ": " 
+			  << _name << ": Zombie is dead.\n";	
+}
 
-public:	
-	Zombie( std::string name );
-	~Zombie( void );
-	void announce( void );
-};
+void Zombie::announce( void ) const
+{
+	std::cout << _index << ": " << _name 
+			  << ": BraiiiiiiinzzzZ...\n"; 
+}
 
-void randomChump( std::string name);
-Zombie* newZombie(std::string name);
+void Zombie::setName(std::string name)
+{
+	_name = name; 
+}
 
-#endif
+void Zombie::setIndex(int index)
+{
+	_index = index;
+}
