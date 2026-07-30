@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 18:32:33 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/30 12:17:23 by admin            ###   ########.fr       */
+/*   Updated: 2026/07/30 12:25:21 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 
 void Harl::debug(void)
 {
-	std::cout << "I love having extra bacon for my" 
+	std::cout << "[DEBUG]\nI love having extra bacon for my" 
 			  << "7XL-double-cheese-triple-pickle-special-"
-			  << "ketchup burger. I really do!\n";
+			  << "ketchup burger. I really do!\n\n";
 }
 
 void Harl::info(void)
 {
-	std::cout << "I cannot believe adding extra bacon costs"
+	std::cout << "[INFO]\nI cannot believe adding extra bacon costs"
 			  << "more money. You didn’t put enough bacon in"
-			  << "my burger! If you did, I wouldn’t be asking for more!\n";
+			  << "my burger! If you did, I wouldn’t be asking for more!\n\n";
 }
 
 void Harl::warning(void)
 {
-	std::cout << "I think I deserve to have some extra bacon"
+	std::cout << "[WARNING]\nI think I deserve to have some extra bacon"
 			  << "for free. I’ve been coming for years, whereas"
-			  << "you started working here just last month.\n";
+			  << "you started working here just last month.\n\n";
 }
 
 void Harl::error(void)
 {
-	std::cout << "This is unacceptable! I want to speak to the manager now. \n";
+	std::cout << "[ERROR]\nThis is unacceptable! I want to speak to the manager now.\n\n";
 }
 
 void Harl::complain(std::string level)
@@ -51,25 +51,17 @@ void Harl::complain(std::string level)
 			break ;
 	}
 
-
 	switch (i)
 	{
 		case 0:
-			std::cout << "[" << word[i] << "]\n";
 			(this->*function[0])();
-			std::cout << "\n";
 		case 1:
-			std::cout << "[" << word[1] << "]\n";
 			(this->*function[1])();
-			std::cout << "\n";
 		case 2:
-			std::cout << "[" << word[2] << "]\n";
 			(this->*function[2])();
-			std::cout << "\n";
 		case 3:
-			std::cout << "[" << word[3] << "]\n";
 			(this->*function[3])();
-			std::cout << "\n";
+			break;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]\n";
 	}
