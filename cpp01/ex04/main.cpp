@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 12:13:08 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/29 18:17:04 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/07/30 17:40:39 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int main(int argc, char **argv)
 		return ft_error("Wrong number of arguments\n");
 
 	std::string buffer;
-	std::string fileIn = static_cast<std::string>(argv[1]);
-	std::string s1 = static_cast<std::string>(argv[2]);
-	std::string s2 = static_cast<std::string>(argv[3]);
+	std::string fileIn = argv[1];
+	std::string s1 = argv[2];
+	std::string s2 = argv[3];
 	std::string fileOut = fileIn + ".replace";
 	
 	std::ifstream oldFile(fileIn.c_str());
