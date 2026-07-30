@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 18:30:12 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/29 18:33:24 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/07/30 09:49:10 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class Harl
 {
 private:
+	static const int WORD_COUNT = 4; 
 	void debug(void);
 	void info(void);
 	void warning(void);
