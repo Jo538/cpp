@@ -3,7 +3,7 @@ CC = c++
 FLAGS = -std=c++98 -Wall -Wextra -Werror -g3 -O0
 SRC = main.cpp Harl.cpp
 OBJ = $(SRC:.cpp=.o)
-NAME = harl
+NAME = harlFilter
 
 all : $(NAME)
 
