@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:21:42 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/31 17:02:02 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/07/31 18:09:22 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ Fixed::Fixed() : fixedPoint(0)
 
 Fixed::Fixed(const int num) : fixedPoint(num << numFractBits) { }
 
-Fixed::Fixed(const float num) : fixedPoint( static_cast<int>(roundf(num)) << numFractBits) { }
+Fixed::Fixed(const float num)
+{
+	fixedPoint = static_cast<int>(num * (1 << numFractBits));
+}
 
 Fixed::Fixed(const Fixed& other) : fixedPoint(other.fixedPoint)
 {
@@ -63,7 +66,7 @@ int Fixed::getRawBits( void ) const
 	return fixedPoint;
 }
 
-std::ostream &Fixed::operator<<(std::ostream &os, const Fixed& other)
+std::ostream &operator<<(std::ostream &os, const Fixed& other)
 {
-	return std::cout << other.toFloat() << std::endl;
+	return os << other.toFloat();
 }
