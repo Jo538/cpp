@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:21:42 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/31 18:09:22 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/08/02 12:42:20 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ Fixed::Fixed() : fixedPoint(0)
 	std::cout << "Default constructor called\n";
 }
 
-Fixed::Fixed(const int num) : fixedPoint(num << numFractBits) { }
+Fixed::Fixed(const int num) : fixedPoint(num << numFractBits) 
+{
+	std::cout << "Int constructor called\n";
+}
 
 Fixed::Fixed(const float num)
 {
-	fixedPoint = static_cast<int>(num * (1 << numFractBits));
+	std::cout << "Float constructor called\n";
+	fixedPoint = static_cast<int>(roundf(num * (1 << numFractBits)));
 }
 
 Fixed::Fixed(const Fixed& other) : fixedPoint(other.fixedPoint)
@@ -46,8 +50,8 @@ Fixed::~Fixed()
 
 float Fixed::toFloat( void ) const
 {
-	int fnum = fixedPoint >> numFractBits;
-	return static_cast<float>(fnum);
+	float fnum = static_cast<float>(fixedPoint); 
+	return fnum / (1 << numFractBits);
 }
 
 int Fixed::toInt( void ) const
