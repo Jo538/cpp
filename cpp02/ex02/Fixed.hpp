@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:14:29 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/02 18:39:01 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/02 18:39:18 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ public:
 	int toInt( void ) const;
 	int getRawBits( void ) const;
 	void setRawBits( int const raw );
+
+	bool operator>(const Fixed &other) const;
 };
 
 	std::ostream &operator<<(std::ostream &os, const Fixed& other);

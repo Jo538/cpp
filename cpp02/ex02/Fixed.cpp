@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:21:42 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/02 18:40:05 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/02 18:40:13 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,11 @@ int Fixed::getRawBits( void ) const
 std::ostream &operator<<(std::ostream &os, const Fixed& other)
 {
 	return os << other.toFloat();
+}
+
+bool Fixed::operator>(const Fixed &other) const
+{
+	if (this->fixedPoint > other.fixedPoint)
+		return true;
+	return false;
 }
