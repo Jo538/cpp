@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:14:29 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/02 18:39:18 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/03 14:59:20 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ public:
 	void setRawBits( int const raw );
 
 	bool operator>(const Fixed &other) const;
+	bool operator<(const Fixed &other) const;
+	bool operator>=(const Fixed &other) const;
+	bool operator<=(const Fixed &other) const;
+	bool operator==(const Fixed &other) const;
+	bool operator!=(const Fixed &other) const;
+
+	float operator+(const Fixed &other) const;
+	float operator-(const Fixed &other) const;
+	float operator*(const Fixed &other) const;
+	float operator/(const Fixed &other) const;
+
+	Fixed& operator++();
+	Fixed operator++(int);
+	Fixed& operator--();
+	Fixed operator--(int);
+
+	static Fixed& min(Fixed& num1, Fixed& num2);
+	static Fixed& max(Fixed& num1, Fixed& num2);
+	static const Fixed& max(const Fixed& num1, const Fixed& num2);
+	static const Fixed& min(const Fixed& num1, const Fixed& num2);
 };
 
 	std::ostream &operator<<(std::ostream &os, const Fixed& other);
