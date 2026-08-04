@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 14:17:47 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/04 21:26:37 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/04 21:29:16 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int main( void )
 		else
 			std::cout << "point is outside triangle\n\n";				
 	}
-
 	return 0;
 }
