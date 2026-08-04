@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:21:42 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/03 14:59:30 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/04 11:53:38 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,25 @@
 #include <cmath>
 #include "Fixed.hpp"
 
-Fixed::Fixed() : fixedPoint(0)
-{
-	std::cout << "Default constructor called\n";
-}
+Fixed::Fixed() : fixedPoint(0) { }
 
-Fixed::Fixed(const int num) : fixedPoint(num << numFractBits) 
-{
-	std::cout << "Int constructor called\n";
-}
+Fixed::Fixed(const int num) : fixedPoint(num << numFractBits) { }
 
 Fixed::Fixed(const float num)
 {
-	std::cout << "Float constructor called\n";
 	fixedPoint = static_cast<int>(roundf(num * (1 << numFractBits)));
 }
 
-Fixed::Fixed(const Fixed& other) : fixedPoint(other.fixedPoint)
-{
-	std::cout << "Copy constructor called\n";
-}
+Fixed::Fixed(const Fixed& other) : fixedPoint(other.fixedPoint) { }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy assignment operator called\n";
 	if (this != &other)
 		fixedPoint = other.fixedPoint;
 	return *this;
 }
 
-Fixed::~Fixed() 
-{
-	std::cout << "Destructor called\n";
-}
+Fixed::~Fixed() { }
 
 float Fixed::toFloat( void ) const
 {
@@ -66,7 +52,6 @@ void Fixed::setRawBits( int const raw )
 
 int Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called\n";
 	return fixedPoint;
 }
 

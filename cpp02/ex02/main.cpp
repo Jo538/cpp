@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 14:17:47 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/03 14:56:15 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/04 11:54:12 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
-	std::cout << Fixed::min( a, b ) << std::endl;
 
 	return 0;
 }
