@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/04 12:07:00 by admin             #+#    #+#             */
-/*   Updated: 2026/08/04 18:44:08 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/04 20:58:57 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,10 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 		|| (crossAB > 0 && crossBC > 0 && crossCA > 0))
 		return true;
 	return false;
+}
+
+std::ostream &operator<<(std::ostream &os, const Point &other)
+{
+	os << "(" << other.getX() << ", " << other.getY() << ")";
+	return os;
 }
