@@ -6,12 +6,14 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:14:29 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/03 14:59:20 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/04 18:01:26 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
+
+#include <iostream>
 
 class Fixed
 {
