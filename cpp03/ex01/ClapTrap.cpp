@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 14:21:13 by admin             #+#    #+#             */
-/*   Updated: 2026/08/06 18:27:23 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/06 18:26:38 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ ClapTrap::ClapTrap() : _name("Default"), _hitPoints(10), _energyPoints(10), _att
 ClapTrap::ClapTrap(const std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) 
 {
 	std::cout << "ClapTrap Name constructor called.\n";
+}
+
+ClapTrap::ClapTrap(const std::string name, size_t hitPoints, size_t energyPoints, size_t attackDamage) : _name(name), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamage(attackDamage) 
+{
+	std::cout << "ClapTrap Extended Init constructor called.\n";
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hitPoints(other._hitPoints), _energyPoints(other._energyPoints), _attackDamage(other._attackDamage) 
@@ -46,6 +51,8 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
+	std::cout << "[CLAPTRAP]: ";
+
 	if (!_hitPoints)
 		std::cout << _name << " can't attack " << target
 		    	  << " as it has 0 hit points." << std::endl;
@@ -57,8 +64,8 @@ void ClapTrap::attack(const std::string& target)
 	}
 	else
 	{
-		std::cout << "ClapTrap " << _name << " attacks " << target
-				  << ", causing " << _attackDamage << " points of damage!" << std::endl;
+		std::cout << _name << " attacks " << target
+			 	  << ", causing " << _attackDamage << " points of damage!" << std::endl;
 
 		_energyPoints-=1;		
 	}
@@ -99,9 +106,28 @@ const std::string &ClapTrap::getName() const
 	return _name;
 }
 
+size_t ClapTrap::getHitPoints() const
+{
+	return _hitPoints;
+}
+
+size_t ClapTrap::getEnergyPoints() const
+{
+	return _energyPoints;
+}
+
+size_t ClapTrap::getAttackDamage() const
+{
+	return _attackDamage;
+}
+
 
 std::ostream &operator<<(std::ostream &os, const ClapTrap &other)
 {
-	os << other.getName();
+	os << "Name: " << other.getName() << std::endl
+	   << "Hit Points: " << other.getHitPoints() << std::endl
+	   << "Energy Points: " << other.getEnergyPoints() << std::endl
+	   << "Attack Damage: " << other.getAttackDamage() << std::endl;
+
 	return (os);
 }
