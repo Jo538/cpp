@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:21:06 by admin             #+#    #+#             */
-/*   Updated: 2026/08/07 13:49:44 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/07 15:13:46 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ public:
 	~DiamondTrap();
 
 	DiamondTrap &operator=(const DiamondTrap &other);
+
+	void attack(const std::string &target);
+	void whoAmI();
 };
 
 
