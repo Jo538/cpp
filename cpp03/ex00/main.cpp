@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 15:30:30 by admin             #+#    #+#             */
-/*   Updated: 2026/08/05 15:57:32 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/07 16:13:31 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,28 @@
 
 int main(void)
 {
+	// DEFAULT CONSTRUCTOR TEST
+	std::cout << "\033[1;32m----DEFAULT CONSTRUCTOR TEST----\033[0m\n";
 	ClapTrap player1;
+
+	// NAME CONSTRUCTOR TEST
+	std::cout << "\n\033[1;32m----NAME CONSTRUCTOR TEST----\033[0m\n";
 	ClapTrap player2("Yann");
+
+	// COPY CONSTRUCTOR TEST
+	std::cout << "\n\033[1;32m----COPY CONSTRUCTOR TEST----\033[0m\n";
 	ClapTrap player3(player1);
 
-	std::cout << "Name of player1: " << player1 << std::endl;
-	std::cout << "Name of player2: " << player2 << std::endl;
-	std::cout << "Name of player3: " << player3 << std::endl;
-
-	player3 = ClapTrap("Jo");
-	std::cout << "Name of player3: " << player3 << std::endl;
-
+	// ATTACK() TEST
+	std::cout << "\n\033[1;32m----ATTACK() TEST----\033[0m\n";
 	player1.attack("Yann");
+
+	// TAKE DAMAGE() TEST
+	std::cout << "\n\033[1;32m----TAKE DAMAGE() TEST----\033[0m\n";
 	player2.takeDamage(2);
+
+	// BE REPAIRED() TEST
+	std::cout << "\n\033[1;32m----BE REPAIRED() TEST----\033[0m\n";
 	player2.beRepaired(1);
+	std::cout << std::endl;
 }

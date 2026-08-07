@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 14:21:13 by admin             #+#    #+#             */
-/*   Updated: 2026/08/06 18:27:23 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/07 16:14:18 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 #include <string>
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0) 
+const size_t ClapTrap::HIT_POINTS;
+const size_t ClapTrap::ENERGY_POINTS;
+const size_t ClapTrap::ATTACK_DAMAGE;
+
+ClapTrap::ClapTrap() : _name("Default"), _hitPoints(HIT_POINTS), _energyPoints(ENERGY_POINTS), _attackDamage(ATTACK_DAMAGE) 
 { 
 	std::cout << "ClapTrap Default constructor called.\n";
 }
 
-ClapTrap::ClapTrap(const std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) 
+ClapTrap::ClapTrap(const std::string name) : _name(name), _hitPoints(HIT_POINTS), _energyPoints(ENERGY_POINTS), _attackDamage(ATTACK_DAMAGE) 
 {
 	std::cout << "ClapTrap Name constructor called.\n";
 }
@@ -57,7 +61,7 @@ void ClapTrap::attack(const std::string& target)
 	}
 	else
 	{
-		std::cout << "ClapTrap " << _name << " attacks " << target
+		std::cout << _name << " attacks " << target
 				  << ", causing " << _attackDamage << " points of damage!" << std::endl;
 
 		_energyPoints-=1;		
