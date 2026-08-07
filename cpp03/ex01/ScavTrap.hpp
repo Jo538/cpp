@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 17:01:18 by admin             #+#    #+#             */
-/*   Updated: 2026/08/06 18:06:40 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/07 15:50:39 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ public:
 	// Member Functions
 	void attack(const std::string &target);
 	void guardGate();
+
+	static const size_t HIT_POINTS = 100;
+	static const size_t ENERGY_POINTS = 50;
+	static const size_t ATTACK_DAMAGE = 20;
 };
 
 #endif

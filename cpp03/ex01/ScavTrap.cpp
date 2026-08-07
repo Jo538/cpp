@@ -6,18 +6,22 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 17:20:08 by admin             #+#    #+#             */
-/*   Updated: 2026/08/06 18:29:31 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/07 15:50:49 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("Default", 100, 50, 20), _is_guarded(false)
+const size_t ScavTrap::HIT_POINTS;
+const size_t ScavTrap::ENERGY_POINTS;
+const size_t ScavTrap::ATTACK_DAMAGE;
+
+ScavTrap::ScavTrap() : ClapTrap("Default", HIT_POINTS, ENERGY_POINTS, ATTACK_DAMAGE), _is_guarded(false)
 { 
 	std::cout << "ScavTrap Default constructor called.\n";
 }
 
-ScavTrap::ScavTrap(const std::string name) : ClapTrap(name, 100, 50, 20), _is_guarded(false)
+ScavTrap::ScavTrap(const std::string name) : ClapTrap(name, HIT_POINTS, ENERGY_POINTS, ATTACK_DAMAGE), _is_guarded(false)
 {
 	std::cout << "ScavTrap Name constructor called.\n";
 }
