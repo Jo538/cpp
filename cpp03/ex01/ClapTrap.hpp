@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 14:11:34 by admin             #+#    #+#             */
-/*   Updated: 2026/08/06 18:06:48 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/07 16:15:25 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ protected:
 	size_t _hitPoints;
 	size_t _energyPoints;
 	size_t _attackDamage; 
+
+	static const size_t HIT_POINTS = 10;
+	static const size_t ENERGY_POINTS = 10;
+	static const size_t ATTACK_DAMAGE = 0;
 
 	// Constructor
 	ClapTrap(const std::string name, size_t hitPoints, size_t energyPoints, size_t attackDamage);
