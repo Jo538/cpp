@@ -1,7 +1,7 @@
 
 CC = c++
 FLAGS = -std=c++98 -Wall -Wextra -Werror -g3 -O0
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 OBJ = $(SRC:.cpp=.o)
 NAME = animal
 

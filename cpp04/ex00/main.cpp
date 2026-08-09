@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:46:31 by admin             #+#    #+#             */
-/*   Updated: 2026/08/09 12:16:54 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/09 12:42:45 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongCat.hpp"
+#include "WrongAnimal.hpp"
 
 int main(void)
 {
+	std::cout << "\033[1;32m----CORRECT DOG AND CAT TEST----\033[0m\n";
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -31,6 +34,12 @@ int main(void)
 	delete i;
 	delete j;
 	delete meta;
+
+	std::cout << "\n\033[1;32m----WRONGANIMAL AND WRONGCAT TEST----\033[0m\n";	
+	const WrongAnimal* wrongCat = new WrongCat();
+	std::cout << wrongCat->getType() << " " << std::endl;
+	wrongCat->makeSound();
+	delete wrongCat;
 
 return 0;
 }
