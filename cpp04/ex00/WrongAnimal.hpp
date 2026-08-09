@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:05:54 by admin             #+#    #+#             */
-/*   Updated: 2026/08/09 12:27:01 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/09 13:20:38 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ public:
 
 	const std::string &getType(void) const;
 	
-	virtual void makeSound(void) const;
+	void makeSound(void) const;
 };
 
 #endif

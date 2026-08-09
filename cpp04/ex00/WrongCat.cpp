@@ -6,28 +6,29 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:21:26 by admin             #+#    #+#             */
-/*   Updated: 2026/08/09 12:43:25 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/09 13:20:50 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "WrongCat.hpp"
+#include "color.h"
 
 const std::string WrongCat::TYPE = "Dog";
 
 WrongCat::WrongCat() : WrongAnimal(TYPE)
 {
-	std::cout << "WrongCat Default Constructor called.\n";
+	std::cout << COLOR_RED << "[WrongCat]" << COLOR_DEFAULT << ": Default Constructor called.\n";
 }
 
 WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 {
-	std::cout << "WrongCat Copy Constructor called.\n";
+	std::cout << COLOR_RED << "[WrongCat]" << COLOR_DEFAULT << ": Copy Constructor called.\n";
 }
 
 WrongCat &WrongCat::operator=(const WrongCat &other)
 {
-	std::cout << "WrongCat Assignment Operator called.\n";
+	std::cout << COLOR_RED << "[WrongCat]" << COLOR_DEFAULT << ": Assignment Operator called.\n";
 	_type = other._type;
 	
 	return *this;
@@ -35,12 +36,12 @@ WrongCat &WrongCat::operator=(const WrongCat &other)
 
 WrongCat::~WrongCat()
 {
-	std::cout << "WrongCat Destructor called.\n";
+	std::cout << COLOR_RED << "[WrongCat]" << COLOR_DEFAULT << ": Destructor called.\n";
 }
 
 void WrongCat::makeSound(void) const
 {
-	std::cout << "WAF WAF WAF\n";
+	std::cout << COLOR_RED << "[WrongCat]" << COLOR_DEFAULT << ": MEOW MEOW MEOW\n";
 }
 
 
