@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:24:32 by admin             #+#    #+#             */
-/*   Updated: 2026/08/07 20:18:24 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/09 12:15:09 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ Dog &Dog::operator=(const Dog &other)
 Dog::~Dog()
 {
 	std::cout << "Dog Destructor called.\n";
-	delete this;
 }
 
 void Dog::makeSound(void) const

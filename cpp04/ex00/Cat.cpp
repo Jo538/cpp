@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:21:26 by admin             #+#    #+#             */
-/*   Updated: 2026/08/07 20:18:37 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/09 12:15:00 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ Cat &Cat::operator=(const Cat &other)
 Cat::~Cat()
 {
 	std::cout << "Cat Destructor called.\n";
-	delete this;
 }
 
 void Cat::makeSound(void) const

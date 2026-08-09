@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:10:28 by admin             #+#    #+#             */
-/*   Updated: 2026/08/07 20:18:05 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/09 12:14:47 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ Animal &Animal::operator=(const Animal &other)
 Animal::~Animal()
 {
 	std::cout << "Animal Destructor called.\n";
-	delete this;
 }
 
 const std::string &Animal::getType(void) const

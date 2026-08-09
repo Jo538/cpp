@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:07:18 by admin             #+#    #+#             */
-/*   Updated: 2026/08/07 20:19:24 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/09 11:58:46 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 
 	Cat &operator=(const Cat &other);
 
-	virtual void makeSound(void) const;
+	void makeSound(void) const;
 };
 
 #endif
