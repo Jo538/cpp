@@ -6,12 +6,12 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:51:47 by admin             #+#    #+#             */
-/*   Updated: 2026/08/09 13:16:59 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/10 18:01:33 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLORS_H
-# define COLORS_H
+#ifndef COLOR_H
+# define COLOR_H
 
 # define COLOR_DEFAULT "\033[0m"
 # define COLOR_RED "\033[31m"

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:23:02 by admin             #+#    #+#             */
-/*   Updated: 2026/08/09 15:24:15 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/10 17:58:20 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ public:
 	virtual ~Dog();
 
 	Dog &operator=(const Dog &other);
+	
+	const std::string &getIdea(unsigned int index) const;
+	void setIdea(std::string idea, unsigned int index);
 
 	void makeSound(void) const;
 };

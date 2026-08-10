@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:05:54 by admin             #+#    #+#             */
-/*   Updated: 2026/08/10 12:11:18 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/10 18:10:14 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ private:
 	static const std::string DEFAULT_TYPE;
 protected:
 	std::string _type;
+	Animal(std::string type);
 public:
 	Animal();
-	Animal(std::string type);
 	Animal(const Animal &other);
 	virtual ~Animal();
 	
@@ -32,8 +32,6 @@ public:
 	const std::string &getType(void) const;
 	
 	virtual void makeSound(void) const;
-
-	static const int ANIMAL_COUNT = 2;
 };
 
 #endif

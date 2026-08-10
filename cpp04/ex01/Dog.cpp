@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:24:32 by admin             #+#    #+#             */
-/*   Updated: 2026/08/10 12:28:59 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/10 17:58:26 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,12 @@ void Dog::makeSound(void) const
 	std::cout << COLOR_MAGENTA << "[Dog]" << COLOR_DEFAULT << ": WAF WAF WAF\n";
 }
 
+const std::string &Dog::getIdea(unsigned int index) const
+{
+	return _brain->getIdea(index);
+}
 
+void Dog::setIdea(std::string idea, unsigned int index)
+{
+	_brain->setIdea(idea, index);
+}

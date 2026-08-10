@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:21:26 by admin             #+#    #+#             */
-/*   Updated: 2026/08/10 12:23:42 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/10 17:30:33 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,13 @@ void Cat::makeSound(void) const
 	std::cout << COLOR_YELLOW << "[Cat]" << COLOR_DEFAULT << ": MEOW MEOW MEOW\n";
 }
 
+const std::string &Cat::getIdea(unsigned int index) const
+{
+	return _brain->getIdea(index);
+}
 
+void Cat::setIdea(std::string idea, unsigned int index)
+{
+	_brain->setIdea(idea, index);
+}
 

@@ -6,15 +6,13 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:10:28 by admin             #+#    #+#             */
-/*   Updated: 2026/08/09 15:47:55 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/10 18:05:27 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Animal.hpp"
 #include "color.h"
-
-const int Animal::ANIMAL_COUNT;
 
 const std::string Animal::DEFAULT_TYPE = "Random Animal";
 
