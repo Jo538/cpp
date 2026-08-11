@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:24:32 by admin             #+#    #+#             */
-/*   Updated: 2026/08/10 17:58:26 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/11 15:07:33 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ Dog::Dog(const Dog &other) : Animal(other)
 Dog &Dog::operator=(const Dog &other)
 {
 	std::cout << COLOR_MAGENTA << "[Dog]" << COLOR_DEFAULT << ": Assignment Operator called.\n";	
+	if (this == &other)
+		return *this;	
 	Animal::operator=(other);
 	*_brain = *other._brain;
 	return *this;

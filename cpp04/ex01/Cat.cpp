@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:21:26 by admin             #+#    #+#             */
-/*   Updated: 2026/08/10 17:30:33 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/11 15:07:17 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ Cat::Cat(const Cat &other) : Animal(other)
 Cat &Cat::operator=(const Cat &other)
 {
 	std::cout << COLOR_YELLOW << "[Cat]" << COLOR_DEFAULT << ": Assignment Operator called.\n";	
-	
+	if (this == &other)
+		return *this;
 	Animal::operator=(other);
 	*_brain = *other._brain;
 	return *this;
