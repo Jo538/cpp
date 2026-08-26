@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 12:13:08 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/26 15:00:43 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/08/26 18:18:19 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void replaceLine(const std::string &buffer, std::ofstream &newFile, const std::s
 	}
 	newFile << buffer.substr(0, pos);
 	newFile << s2;
-	pos += s2.length();
+	pos += s1.length();
 	replaceLine(buffer.substr(pos, buffer.length() - pos), newFile, s1, s2);
 }
 
@@ -40,7 +40,7 @@ int ft_error(std::string str)
 int main(int argc, char **argv)
 {
 	if (argc != 4)
-		return ft_error("Wrong number of arguments\n");
+		return ft_error("Wrong number of arguments");
 
 	std::string buffer;
 	std::string fileIn = argv[1];
@@ -52,6 +52,8 @@ int main(int argc, char **argv)
 	std::ofstream newFile(fileOut.c_str());
 	if (!oldFile || !newFile)
 		return ft_error(strerror(errno));
+	if (s1.empty() || s2.empty())
+		return ft_error("Error: Empty string");
 
 	while (std::getline(oldFile, buffer))
 	{

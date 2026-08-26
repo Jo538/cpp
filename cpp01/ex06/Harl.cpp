@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 18:32:33 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/30 12:25:21 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/26 18:08:24 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ void Harl::complain(std::string level)
 	{
 		case 0:
 			(this->*function[0])();
+			// fallthrough
 		case 1:
 			(this->*function[1])();
+			// fallthrough
 		case 2:
 			(this->*function[2])();
+			// fallthrough
 		case 3:
 			(this->*function[3])();
 			break;
