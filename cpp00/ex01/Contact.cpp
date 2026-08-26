@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 19:38:50 by admin             #+#    #+#             */
-/*   Updated: 2026/07/27 19:38:52 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/26 10:28:38 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+#include <string>
 #include <iostream>
 
 const std::string &Contact::getFirstName() const { return first_name; }
