@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/27 19:39:19 by admin             #+#    #+#             */
-/*   Updated: 2026/07/27 19:39:21 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/26 10:34:30 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool PhoneBook::add_contact()
 	return true;
 }
 
-static void print_cell(const std::string &cell, const int col_width)
+static void print_cell(const std::string &cell, long unsigned int col_width)
 {
 	if (cell.length() > col_width)
 		std::cout << cell.substr(0, col_width - 1) + ".";
