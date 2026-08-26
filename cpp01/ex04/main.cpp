@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 12:13:08 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/30 17:40:39 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/26 15:00:43 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void replaceLine(const std::string &buffer, std::ofstream &newFile, const std::s
 
 int ft_error(std::string str)
 {
-	std::cerr << str;
+	std::cerr << str << std::endl;
 	return 1; 
 }
 
