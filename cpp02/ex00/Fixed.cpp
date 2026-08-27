@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 12:21:42 by jchartie          #+#    #+#             */
-/*   Updated: 2026/07/31 14:57:14 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/08/27 10:33:27 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ Fixed::Fixed() : fixedPoint(0)
 	std::cout << "Default constructor called\n";
 }
 
-Fixed::Fixed(const Fixed& other) : fixedPoint(other.fixedPoint)
+Fixed::Fixed(const Fixed& other)
 {
 	std::cout << "Copy constructor called\n";
+	fixedPoint = other.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
 	std::cout << "Copy assignment operator called\n";
 	if (this != &other)
-		fixedPoint = other.fixedPoint;
+		fixedPoint = other.getRawBits();
 	return *this;
 }
 

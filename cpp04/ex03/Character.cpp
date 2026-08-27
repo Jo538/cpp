@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 18:03:25 by admin             #+#    #+#             */
-/*   Updated: 2026/08/11 19:27:31 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/12 16:03:28 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	
+	if (_inventory[idx] && (idx > 0 && idx <= SIZE_INVENTORY))
+		_inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	
+	if (_inventory[idx] && (idx > 0 && idx <= SIZE_INVENTORY))
+		_inventory[idx]->use(target);
 }
