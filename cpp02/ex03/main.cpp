@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/31 14:17:47 by jchartie          #+#    #+#             */
-/*   Updated: 2026/08/04 21:29:16 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/27 11:39:43 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int main( void )
 	for (int i=0; i < 3; i++)
 	{
 		std::cout << "a" << triangle[i][0]
-				  << "b" << triangle[i][1]
-				  << "c" << triangle[i][2]
-				  << "p" << triangle[i][3] << std::endl;
+				  << ", b" << triangle[i][1]
+				  << ", c" << triangle[i][2]
+				  << ", p" << triangle[i][3] << std::endl;
 		if (bsp(triangle[i][0], triangle[i][1], triangle[i][2], triangle[i][3]))
 			std::cout << "point is in triangle\n\n";
 		else
