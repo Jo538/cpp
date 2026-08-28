@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 14:11:34 by admin             #+#    #+#             */
-/*   Updated: 2026/08/07 16:09:08 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/28 19:29:28 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ private:
 	static const size_t HIT_POINTS = 10;
 	static const size_t ENERGY_POINTS = 10;
 	static const size_t ATTACK_DAMAGE = 0;
+
 public:
 	ClapTrap();
 	ClapTrap(const std::string name);

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 15:30:30 by admin             #+#    #+#             */
-/*   Updated: 2026/08/07 16:21:42 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/28 19:38:58 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,10 @@ int main(void)
 	// ATTACK() TEST
 	std::cout << "\n\033[1;32m----SCAVTRAP ATTACK() TEST----\033[0m\n";
 	player2.attack("Jo");
+	std::cout << std::endl;
+
+	// GUARD GATE() TEST
+	std::cout << "\n\033[1;32m----GUARD GATE() TEST----\033[0m\n";
+	player2.guardGate();
 	std::cout << std::endl;
 }
