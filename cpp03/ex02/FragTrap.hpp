@@ -6,19 +6,17 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 19:46:54 by admin             #+#    #+#             */
-/*   Updated: 2026/08/07 15:47:30 by admin            ###   ########.fr       */
+/*   Updated: 2026/08/28 19:41:37 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
-#include "ClapTrap.hpp"
+# include "ClapTrap.hpp"
 
 class FragTrap : public ClapTrap
 {
-private:
-
 public:
 	// Constructor
 	FragTrap();
