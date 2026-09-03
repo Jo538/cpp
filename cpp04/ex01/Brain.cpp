@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 15:09:01 by admin             #+#    #+#             */
-/*   Updated: 2026/08/11 15:06:54 by admin            ###   ########.fr       */
+/*   Updated: 2026/09/03 19:07:56 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Brain::~Brain()
 	std::cout << COLOR_GREEN << "[Brain]" << COLOR_DEFAULT << ": Destructor called.\n";
 }
 
-void Brain::setIdea(std::string &idea, unsigned int index)
+void Brain::setIdea(std::string &idea, int index)
 {
 	if (index < 0 || index >= IDEAS_COUNT)
 	{
@@ -53,8 +53,14 @@ void Brain::setIdea(std::string &idea, unsigned int index)
 	_idea[index] = idea;
 }
 
-const std::string &Brain::getIdea(unsigned int index) const
+//TODO: in case of error, what should I return for refs?
+const std::string &Brain::getIdea(int index) const
 {
+	if (index < 0 || index >= IDEAS_COUNT)
+	{
+		std::cerr << "Index is outside of bounds.\n";
+		return "";
+	}
 	return _idea[index];
 }
 
