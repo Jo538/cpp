@@ -6,12 +6,13 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 15:09:01 by admin             #+#    #+#             */
-/*   Updated: 2026/09/03 19:07:56 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/09/04 11:10:45 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Brain.hpp"
+#include <stdexcept>
 #include "color.h"
 
 const int Brain::IDEAS_COUNT;
@@ -46,21 +47,14 @@ Brain::~Brain()
 void Brain::setIdea(std::string &idea, int index)
 {
 	if (index < 0 || index >= IDEAS_COUNT)
-	{
-		std::cerr << "Index is outside of bounds.\n";
-		return ;
-	}
+		throw std::out_of_range("Brain::setIdea: index is out of bounds");
 	_idea[index] = idea;
 }
 
-//TODO: in case of error, what should I return for refs?
+// TODO: why does the parameter inside getIdea need to be a ref and can't be passed by value?
 const std::string &Brain::getIdea(int index) const
 {
 	if (index < 0 || index >= IDEAS_COUNT)
-	{
-		std::cerr << "Index is outside of bounds.\n";
-		return "";
-	}
-	return _idea[index];
+		throw std::out_of_range("Brain::getIdea: index is out of bounds");
+	return _idea[index];			
 }
-

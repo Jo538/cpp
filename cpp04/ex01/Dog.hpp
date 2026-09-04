@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:23:02 by admin             #+#    #+#             */
-/*   Updated: 2026/08/10 17:58:20 by admin            ###   ########.fr       */
+/*   Updated: 2026/09/04 10:22:26 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ public:
 
 	Dog &operator=(const Dog &other);
 	
-	const std::string &getIdea(unsigned int index) const;
-	void setIdea(std::string idea, unsigned int index);
+	const std::string &getIdea(int index) const;
+	void setIdea(std::string idea, int index);
 
 	void makeSound(void) const;
 };
