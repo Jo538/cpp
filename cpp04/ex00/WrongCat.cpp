@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:21:26 by admin             #+#    #+#             */
-/*   Updated: 2026/09/03 18:57:47 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/09/04 12:58:25 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "WrongCat.hpp"
 #include "color.h"
 
-const std::string WrongCat::TYPE = "Wrong animal";
+const std::string WrongCat::TYPE = "Wrong cat";
 
 WrongCat::WrongCat() : WrongAnimal(TYPE)
 {
