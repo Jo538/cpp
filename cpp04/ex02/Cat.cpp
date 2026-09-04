@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:21:26 by admin             #+#    #+#             */
-/*   Updated: 2026/08/11 15:07:17 by admin            ###   ########.fr       */
+/*   Updated: 2026/09/04 11:25:08 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void Cat::makeSound(void) const
 	std::cout << COLOR_YELLOW << "[Cat]" << COLOR_DEFAULT << ": MEOW MEOW MEOW\n";
 }
 
-const std::string &Cat::getIdea(unsigned int index) const
+const std::string &Cat::getIdea(int index) const
 {
 	return _brain->getIdea(index);
 }
 
-void Cat::setIdea(std::string idea, unsigned int index)
+void Cat::setIdea(std::string idea, int index)
 {
 	_brain->setIdea(idea, index);
 }

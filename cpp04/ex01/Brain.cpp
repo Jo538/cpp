@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 15:09:01 by admin             #+#    #+#             */
-/*   Updated: 2026/09/04 11:10:45 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/09/04 11:26:04 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void Brain::setIdea(std::string &idea, int index)
 	_idea[index] = idea;
 }
 
-// TODO: why does the parameter inside getIdea need to be a ref and can't be passed by value?
 const std::string &Brain::getIdea(int index) const
 {
 	if (index < 0 || index >= IDEAS_COUNT)

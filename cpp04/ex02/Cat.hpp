@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:07:18 by admin             #+#    #+#             */
-/*   Updated: 2026/08/11 15:16:33 by admin            ###   ########.fr       */
+/*   Updated: 2026/09/04 11:24:59 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ public:
 
 	Cat &operator=(const Cat &other);
 
-	const std::string &getIdea(unsigned int index) const;
-	void setIdea(std::string idea, unsigned int index);
+	const std::string &getIdea(int index) const;
+	void setIdea(std::string idea, int index);
 	
 	void makeSound(void) const;
 };

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:46:31 by admin             #+#    #+#             */
-/*   Updated: 2026/08/11 15:36:53 by admin            ###   ########.fr       */
+/*   Updated: 2026/09/04 11:26:48 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,24 @@ int main(void)
 	Dog pollux;
 	pollux.setIdea("I want your food! WAF WAF WAF!", 0);
 	std::cout << pollux.getIdea(0) << std::endl;
+
+std::cout << BOLD << "\n----SET IDEA FOR DOG WITH WRONG INDEXING----\n" << COLOR_DEFAULT;
+	try
+	{
+		pollux.setIdea("I want your food! WAF WAF WAF!", -1);
+	}
+	catch(const std::out_of_range &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try
+	{
+	std::cout << pollux.getIdea(-1) << std::endl;
+	}
+	catch(const std::out_of_range &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}		
 	
 	std::cout << BOLD << "\n----SET IDEA FOR CAT----\n" << COLOR_DEFAULT;
 	Cat sardine;

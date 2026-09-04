@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:24:32 by admin             #+#    #+#             */
-/*   Updated: 2026/08/11 15:07:33 by admin            ###   ########.fr       */
+/*   Updated: 2026/09/04 11:25:19 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void Dog::makeSound(void) const
 	std::cout << COLOR_MAGENTA << "[Dog]" << COLOR_DEFAULT << ": WAF WAF WAF\n";
 }
 
-const std::string &Dog::getIdea(unsigned int index) const
+const std::string &Dog::getIdea(int index) const
 {
 	return _brain->getIdea(index);
 }
 
-void Dog::setIdea(std::string idea, unsigned int index)
+void Dog::setIdea(std::string idea, int index)
 {
 	_brain->setIdea(idea, index);
 }

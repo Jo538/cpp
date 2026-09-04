@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 15:09:01 by admin             #+#    #+#             */
-/*   Updated: 2026/08/11 15:06:54 by admin            ###   ########.fr       */
+/*   Updated: 2026/09/04 11:26:15 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,17 @@ Brain::~Brain()
 	std::cout << COLOR_GREEN << "[Brain]" << COLOR_DEFAULT << ": Destructor called.\n";
 }
 
-void Brain::setIdea(std::string &idea, unsigned int index)
+void Brain::setIdea(std::string &idea, int index)
 {
 	if (index < 0 || index >= IDEAS_COUNT)
-	{
-		std::cerr << "Index is outside of bounds.\n";
-		return ;
-	}
+		throw std::out_of_range("Brain::setIdea: index is out of bounds");
 	_idea[index] = idea;
 }
 
-const std::string &Brain::getIdea(unsigned int index) const
+// TODO: why does the parameter inside getIdea need to be a ref and can't be passed by value?
+const std::string &Brain::getIdea(int index) const
 {
-	return _idea[index];
+	if (index < 0 || index >= IDEAS_COUNT)
+		throw std::out_of_range("Brain::getIdea: index is out of bounds");
+	return _idea[index];			
 }
-
