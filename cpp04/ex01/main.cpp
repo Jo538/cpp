@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:46:31 by admin             #+#    #+#             */
-/*   Updated: 2026/09/04 11:13:21 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/09/04 12:50:16 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,15 @@ int main(void)
 	
 	std::cout << BOLD << "\n----COPY CONSTRUCTOR TESTS ON DOG----\n" << COLOR_DEFAULT;
 	Dog havana(pollux);
-	std::cout << havana.getIdea(0) << std::endl;
+	std::cout << "Copy constructor: Before idea changed: " << havana.getIdea(0) << std::endl;
+	havana.setIdea("I want cuddles! WAF WAF WAF!", 0);
+	std::cout << "Copy consturctor: After idea changed: " << havana.getIdea(0) << std::endl;
 
 	std::cout << BOLD << "\n----COPY CONSTRUCTOR TESTS ON CAT----\n" << COLOR_DEFAULT;
 	Cat salmon(sardine);
-	std::cout << salmon.getIdea(0) << std::endl;
+	std::cout << "Copy constructor: Before idea changed: " << salmon.getIdea(0) << std::endl;
+	salmon.setIdea("I want cuddles! MEOW MEOW MEOW!", 0);
+	std::cout << "Copy consturctor: After idea changed: " << salmon.getIdea(0) << std::endl;
 
 	// SET SECOND IDEA INTO DOG'S BRAIN	
 	havana.setIdea("I want to cuddle with my human! WAF WAF WAF!", 1);

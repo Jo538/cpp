@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 19:46:31 by admin             #+#    #+#             */
-/*   Updated: 2026/09/04 11:26:48 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/09/04 12:19:12 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main(void)
 	pollux.setIdea("I want your food! WAF WAF WAF!", 0);
 	std::cout << pollux.getIdea(0) << std::endl;
 
-std::cout << BOLD << "\n----SET IDEA FOR DOG WITH WRONG INDEXING----\n" << COLOR_DEFAULT;
+	std::cout << BOLD << "\n----SET IDEA FOR DOG WITH WRONG INDEXING----\n" << COLOR_DEFAULT;
 	try
 	{
 		pollux.setIdea("I want your food! WAF WAF WAF!", -1);
