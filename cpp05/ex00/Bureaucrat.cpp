@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:00:22 by admin             #+#    #+#             */
-/*   Updated: 2026/10/26 21:00:59 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/27 12:47:03 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ Bureaucrat::Bureaucrat() : _name("Default Bureaucrat"), _grade(150)
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
 	std::cout << "Bureaucrat: Spec Constructor called" << std::endl;
+	if (_grade > 150)
+		throw GradeTooLowException();
+	if (_grade < 1)
+		throw GradeTooHighException();
 }
 
 Bureaucrat::~Bureaucrat()
@@ -67,4 +71,14 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".\n";
 	return os;
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Error: Grade too high.";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Error: Grade too low.";
 }

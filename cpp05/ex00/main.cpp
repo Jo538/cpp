@@ -6,11 +6,12 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:24:52 by admin             #+#    #+#             */
-/*   Updated: 2026/10/26 21:10:56 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/27 12:46:34 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <exception>
 #include "Bureaucrat.hpp"
 
 int main(void)
@@ -38,6 +39,22 @@ int main(void)
 	std::cout << ++two;
 	std::cout << two;
 	std::cout << three;
+
+	// Test Exceptions
+	std::cout << "Test Exceptions" << std::endl;
+	try
+	{
+		Bureaucrat four("Jo", 150);
+		std::cout << "Grade within range" << std::endl;
+		Bureaucrat five("Pollux", 151);
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+
+	
 
 	std::cout << "Test destructor" << std::endl;
 }
