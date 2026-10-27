@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:24:52 by admin             #+#    #+#             */
-/*   Updated: 2026/10/27 12:46:34 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/27 13:00:19 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int main(void)
 	std::cout << "Test Copy assignment operator" << std::endl;
 	one = three;
 	std::cout << one;
+	one = Bureaucrat("Havana", 150);
 
 	
 	std::cout << "Test increment/decrement" << std::endl;
-	std::cout << ++one;
-	std::cout << --one;
+	std::cout << ++two;
+	std::cout << --two;
 
 	std::cout << "Test deep copies" << std::endl;
 	std::cout << ++two;
@@ -45,7 +46,14 @@ int main(void)
 	try
 	{
 		Bureaucrat four("Jo", 150);
-		std::cout << "Grade within range" << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	try
+	{
 		Bureaucrat five("Pollux", 151);
 	}
 	catch (std::exception& e)
@@ -53,7 +61,14 @@ int main(void)
 		std::cout << e.what() << std::endl;
 	}
 
-
+	try
+	{
+		--one;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	
 
 	std::cout << "Test destructor" << std::endl;

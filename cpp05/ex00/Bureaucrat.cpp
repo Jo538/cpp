@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:00:22 by admin             #+#    #+#             */
-/*   Updated: 2026/10/27 12:47:03 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/27 12:50:06 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,16 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) //TODO: _name is a co
 Bureaucrat& Bureaucrat::operator++()
 {
 	this->_grade--;
+	if (this->_grade < 1)
+		throw GradeTooHighException();
 	return *this;
 }
 
 Bureaucrat& Bureaucrat::operator--()
 {
 	this->_grade++;
+	if (this->_grade > 150)
+		throw GradeTooLowException();
 	return *this;
 }
 
