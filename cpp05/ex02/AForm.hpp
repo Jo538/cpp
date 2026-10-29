@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 17:35:29 by admin             #+#    #+#             */
-/*   Updated: 2026/10/29 19:22:18 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 20:53:46 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ public:
 	AForm(const AForm& other);
 
 	// Destructor
-	~AForm();
+	virtual ~AForm();
 
 	// Copy Assignment Operator Overload
 	const AForm& operator=(const AForm& other);
