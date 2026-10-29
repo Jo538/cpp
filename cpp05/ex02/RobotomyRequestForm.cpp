@@ -25,7 +25,7 @@ RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy", _GRADE_SIGN, _GRA
 	std::cout << "  " << COLOR_MAGENTA << "[RobotomyForm]       " << COLOR_DEFAULT << DIM << "Default constructor called" << COLOR_DEFAULT << std::endl;
 }	
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other), _target("Default")
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm(other), _target(other._target)
 {
 	std::cout << "  " << COLOR_MAGENTA << "[RobotomyForm]       " << COLOR_DEFAULT << DIM << "Copy constructor called" << COLOR_DEFAULT << std::endl;
 }

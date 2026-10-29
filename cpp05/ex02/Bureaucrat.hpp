@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 19:51:27 by admin             #+#    #+#             */
-/*   Updated: 2026/10/29 14:32:33 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 19:37:06 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ public:
 	class GradeTooLowException;
 
 	// Member functions
-	void signAForm(AForm& AForm) const;
+	void signForm(AForm& form) const;
+	void executeForm(AForm const & form) const;
 };
 
 class Bureaucrat::GradeTooHighException : public std::exception

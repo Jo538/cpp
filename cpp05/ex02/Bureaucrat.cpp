@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:00:22 by admin             #+#    #+#             */
-/*   Updated: 2026/10/29 14:32:31 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 19:37:53 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,29 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return "Bureaucrat: Error: Grade too low.";
 }
 
-void Bureaucrat::signAForm(AForm& AForm) const
+void Bureaucrat::signForm(AForm& form) const
 {
 	try
 	{
-		AForm.beSigned(*this);
-		std::cout << _name << " signed " << AForm.getName() << std::endl;
+		form.beSigned(*this);
+		std::cout << _name << " signed " << form.getName() << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << _name << "couldn't sign " << AForm.getName()
+		std::cout << _name << " couldn't sign " << form.getName()
 		<< " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 }

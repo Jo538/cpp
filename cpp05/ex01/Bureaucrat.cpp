@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:00:22 by admin             #+#    #+#             */
-/*   Updated: 2026/10/29 11:03:04 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 19:37:46 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void Bureaucrat::signForm(Form& form) const
 	}
 	catch (std::exception& e)
 	{
-		std::cout << _name << "couldn't sign " << form.getName()
+		std::cout << _name << " couldn't sign " << form.getName()
 		<< " because " << e.what() << std::endl;
 	}
 }

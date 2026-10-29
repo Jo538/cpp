@@ -46,7 +46,7 @@ void ShrubberyCreationForm::action() const
 	std::ofstream outFile(tmp.c_str());
 
 	if (!outFile)
-		throw std::runtime_error("Error: " + tmp + "couldn't be opened.");
+		throw std::runtime_error("Error: " + tmp + " couldn't be opened.");
 	outFile <<
 	"         v" << std::endl <<
 	"        >X<" << std::endl <<

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 17:35:29 by admin             #+#    #+#             */
-/*   Updated: 2026/10/29 15:25:20 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 19:22:18 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ public:
 	virtual void action() const = 0;
 };
 
-class AForm::GradeTooHighException : std::exception
+class AForm::GradeTooHighException : public std::exception
 {
 public:
 	const char *what() const throw();
 };
 
-class AForm::GradeTooLowException : std::exception
+class AForm::GradeTooLowException : public std::exception
 {
 public:
 	const char *what() const throw();
 };
 
-class AForm::FormNotSigned : std::exception
+class AForm::FormNotSigned : public std::exception
 {
 public:
 	const char *what() const throw();

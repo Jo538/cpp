@@ -24,7 +24,7 @@ PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Pardon", 
 	std::cout << "  " << COLOR_GREEN << "[PresidentialForm]       " << COLOR_DEFAULT << DIM << "Default constructor called" << COLOR_DEFAULT << std::endl;
 }	
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other), _target("Default")
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other), _target(other._target)
 {
 	std::cout << "  " << COLOR_GREEN << "[PresidentialForm]       " << COLOR_DEFAULT << DIM << "Copy constructor called" << COLOR_DEFAULT << std::endl;
 }
