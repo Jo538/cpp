@@ -19,9 +19,10 @@
 class RobotomyRequestForm : public AForm
 {
 private:
+	static int fail;
 	const std::string _target;
-	static const int _GRADE_SIGN = 145;
-	static const int _GRADE_EXEC = 137;
+	static const int _GRADE_SIGN = 72;
+	static const int _GRADE_EXEC = 45;
 public:
 	RobotomyRequestForm();
 	RobotomyRequestForm(const std::string& target);

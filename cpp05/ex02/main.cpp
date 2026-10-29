@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:24:52 by admin             #+#    #+#             */
-/*   Updated: 2026/10/29 15:31:24 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 18:38:39 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <exception>
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "color.h"
 
 /* ---------------------------- output helpers ---------------------------- */
@@ -69,8 +70,16 @@ int main(void)
 	ShrubberyCreationForm b("target");
 	ShrubberyCreationForm c(b);
 
+	RobotomyRequestForm four;
+	RobotomyRequestForm five("target");
+	RobotomyRequestForm six(five);
+
 	section(2, "TRIGGER ACTION SHRUBBERY");
 	a.action();
+
+	section(3, "TRIGGER ACTION ROBOTOMY");
+	five.action();
+	four.action();
 	
 	section(3, "DESTRUCTORS");
 }
