@@ -19,7 +19,9 @@
 # define COLOR_YELLOW "\033[33m"
 # define COLOR_BLUE "\033[34m"
 # define COLOR_MAGENTA "\033[35m"
+# define COLOR_CYAN "\033[36m"
 # define COLOR_WHITE "\033[37m"
 # define BOLD "\033[1m"
+# define DIM "\033[2m"
 
 #endif

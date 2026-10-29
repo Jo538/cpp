@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:00:22 by admin             #+#    #+#             */
-/*   Updated: 2026/10/27 21:51:07 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 11:03:04 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 #include <string>
 #include <exception>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "color.h"
 
 Bureaucrat::Bureaucrat() : _name("Default Bureaucrat"), _grade(150) 
 {
-	std::cout << "Bureaucrat: Default Constructor called" << std::endl;
+	std::cout << "  " << COLOR_YELLOW << "[Bureaucrat] " << COLOR_DEFAULT << DIM << "Default constructor called" << COLOR_DEFAULT << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	std::cout << "Bureaucrat: Spec Constructor called" << std::endl;
+	std::cout << "  " << COLOR_YELLOW << "[Bureaucrat] " << COLOR_DEFAULT << DIM << "Spec constructor called" << COLOR_DEFAULT << std::endl;
 	if (_grade > 150)
 		throw GradeTooLowException();
 	if (_grade < 1)
@@ -31,17 +33,17 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat: Destructor called" << std::endl;
+	std::cout << "  " << COLOR_YELLOW << "[Bureaucrat] " << COLOR_DEFAULT << DIM << "Destructor called" << COLOR_DEFAULT << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade)
 {
-	std::cout << "Bureaucrat: Copy Constructor called" << std::endl;	
+	std::cout << "  " << COLOR_YELLOW << "[Bureaucrat] " << COLOR_DEFAULT << DIM << "Copy constructor called" << COLOR_DEFAULT << std::endl;	
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) //TODO: _name is a const so can't reassign it. Is what I've done correct?
 {
-	std::cout << "Bureaucrat: Copy Assignment Operator called" << std::endl;	
+	std::cout << "  " << COLOR_YELLOW << "[Bureaucrat] " << COLOR_DEFAULT << DIM << "Copy assignment operator called" << COLOR_DEFAULT << std::endl;	
 	this->_grade = other._grade;
 	return *this;
 }
@@ -74,7 +76,7 @@ int Bureaucrat::getGrade() const
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
-	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+	os << COLOR_YELLOW << "[Bureaucrat] " << COLOR_DEFAULT << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return os;
 }
 

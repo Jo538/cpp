@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 17:35:29 by admin             #+#    #+#             */
-/*   Updated: 2026/10/29 10:33:54 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 10:49:22 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <string>
 # include <iostream>
 # include <exception>
-# include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
