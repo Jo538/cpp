@@ -6,13 +6,19 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 19:51:27 by admin             #+#    #+#             */
-/*   Updated: 2026/10/27 12:38:08 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/29 10:34:26 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
-#include <exception>
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
+
+# include <string>
+# include <iostream>
+# include <exception>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -41,6 +47,9 @@ public:
 	// Nested Classes
 	class GradeTooHighException;
 	class GradeTooLowException;
+
+	// Member functions
+	void signForm(Form& form) const;
 };
 
 class Bureaucrat::GradeTooHighException : public std::exception
@@ -56,3 +65,5 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
+
+#endif

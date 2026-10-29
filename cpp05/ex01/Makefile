@@ -1,7 +1,7 @@
 
 CC = c++
 FLAGS = -std=c++98 -Wall -Wextra -Werror -g3 -O0
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 OBJ = $(SRC:.cpp=.o)
 NAME = form
 

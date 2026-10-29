@@ -6,13 +6,14 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:24:52 by admin             #+#    #+#             */
-/*   Updated: 2026/10/27 17:18:44 by admin            ###   ########.fr       */
+/*   Updated: 2026/10/27 21:31:25 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <exception>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include "color.h"
 
 int main(void)
@@ -21,11 +22,19 @@ int main(void)
 	Bureaucrat one; // default
 	Bureaucrat two("Yann Calvo Lopez", 42); // spec
 	Bureaucrat three(two); // copy
+	
+	Form a; // default
+	Form b("AZ - 5", 42, 52); // spec
+	Form c(b); // copy
 
 	std::cout << BOLD << "\n----TEST OVERLOAD OPERATOR << ----\n" << COLOR_DEFAULT;	
 	std::cout << one << std::endl;
 	std::cout << two << std::endl;
 	std::cout << three << std::endl;
+
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << c << std::endl;
 
 	std::cout << BOLD << "\n----TEST COPY ASSIGNMENT OPERATOR----\n" << COLOR_DEFAULT;
 	std::cout << COLOR_GREEN << "Before assignment:\n" << COLOR_DEFAULT 
@@ -33,6 +42,12 @@ int main(void)
 	one = three;
 	std::cout << COLOR_GREEN << "\nAfter assignment:\n" << COLOR_DEFAULT 
 	"one --> " << one << std::endl;
+
+	std::cout << COLOR_GREEN << "Before assignment:\n" << COLOR_DEFAULT 
+	"a --> " << a << std::endl << "c --> " << c << std::endl;	
+	a = c;
+	std::cout << COLOR_GREEN << "\nAfter assignment:\n" << COLOR_DEFAULT 
+	"a --> " << a << std::endl;
 	
 	std::cout << BOLD << "\n----TEST INCREMENT/DECREMENT----\n" << COLOR_DEFAULT;
 	std::cout << COLOR_MAGENTA << "Before increment: " COLOR_DEFAULT << two << std::endl;
@@ -48,6 +63,8 @@ int main(void)
 	std::cout << COLOR_BLUE << "\nAfter increment of bureaucrat 2:\n" << COLOR_DEFAULT << 
 	"two --> " << two << "\nthree --> " << three << std::endl;	
 
+	//TODO: Do the same for Form
+	
 	// Test Exceptions
 	std::cout << BOLD << "\n----TEST EXCEPTIONS----\n" << COLOR_DEFAULT;
 	try
