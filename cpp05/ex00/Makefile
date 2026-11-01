@@ -4,9 +4,9 @@ FLAGS = -std=c++98 -Wall -Wextra -Werror -g3 -O0
 SRC_DIR = src
 INC_DIR = include
 INC = -I$(INC_DIR)
+OBJ_DIR = obj
 SRC = main.cpp Bureaucrat.cpp
-SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
-OBJ = $(SRCS:.cpp=.o)
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 NAME = bureaucrat
 
 all : $(NAME)
@@ -14,13 +14,14 @@ all : $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-$(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
 	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 .PHONY: all clean fclean re
 
 clean :
-	rm -rf $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean : clean
 	rm -rf $(NAME)
