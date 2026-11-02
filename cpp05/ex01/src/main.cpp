@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 20:24:52 by admin             #+#    #+#             */
-/*   Updated: 2026/10/29 11:47:50 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/01 20:21:11 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void	got(const std::string& what, bool pass)
 	std::cout << "  got      : " << what << "   "
 		<< (pass ? COLOR_GREEN "✔ PASS" : COLOR_RED "✘ FAIL")
 		<< COLOR_DEFAULT << std::endl;
-}
+}\
+
 
 /* --------------------------------- tests -------------------------------- */
 
