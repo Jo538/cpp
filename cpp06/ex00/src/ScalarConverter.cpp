@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:52:05 by admin             #+#    #+#             */
-/*   Updated: 2026/11/03 15:46:57 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/03 15:58:08 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iomanip>
 #include <cctype>
 #include <cstdlib>
+#include <limits>
 #include "ScalarConverter.hpp"
 
 // char --> c
@@ -62,7 +63,19 @@ static void str_to_int(const std::string& item)
 	const char *str = item.c_str();
 	char *end;
 
-	int v_int = std::strtol(str, &end, 10); //TODO: check that string was not too big to store long + long must be able to hold in int, check range
+	long tmp = std::strtol(str, &end, 10);
+	if (errno == ERANGE)
+	{
+		std::cerr << "Error: long out of range" << std::endl;
+		return ;
+	}
+	if (tmp < std::numeric_limits<int>::min() || tmp > std::numeric_limits<int>::max())
+	{
+		std::cerr << "Error: int out of range" << std::endl;
+		return ;		
+	}
+	
+	int v_int = static_cast<int>(tmp);
 	char v_char = static_cast<char>(v_int);
 	float v_float = static_cast<float>(v_int);
 	double v_double = static_cast<double>(v_int);
