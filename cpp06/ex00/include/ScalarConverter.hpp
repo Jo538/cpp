@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:42:58 by admin             #+#    #+#             */
-/*   Updated: 2026/11/03 15:19:04 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/03 15:47:08 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ enum Type
 class ScalarConverter
 {
 public:
-	static void convert(const std::string& argument);
+	static void convert(const std::string& item);
 private:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter& other);

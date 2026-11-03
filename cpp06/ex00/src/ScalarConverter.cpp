@@ -6,13 +6,14 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:52:05 by admin             #+#    #+#             */
-/*   Updated: 2026/11/03 15:30:56 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/03 15:46:57 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <cctype>
 #include <cstdlib>
 #include "ScalarConverter.hpp"
 
@@ -30,25 +31,25 @@ static void print(char v_char, int v_int, float v_float, double v_double)
 	std::cout << "char: " << v_char << std::endl;
 	std::cout << "int: " << v_int << std::endl;
 
-	std::cout << std::fixed;
-	std::cout << "float: " << std::setprecision(1) << v_float << 'f' << std::endl;
-	std::cout << "double: " << std::setprecision(1) << v_double << std::endl;	
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: "  << v_float << 'f' << std::endl;
+	std::cout << "double: " << v_double << std::endl;	
 }
 
-static Type register_type(const std::string& string)
+static Type register_type(const std::string& item)
 {
 	// for char --> length of string is 1 and char is alpha
-	if (string.size() == 1 && std::isalpha(string[0]))
+	if (item.size() == 1 && std::isalpha(item[0]))
 		return CHAR;
 	// for int --> only has digits
-	if (string.find_first_not_of("0123456789") == std::string::npos)
+	if (item.find_first_not_of("0123456789") == std::string::npos)
 		return INT;
 	return UNKNOWN;
 }
 
-static void str_to_char(const std::string& string)
+static void str_to_char(const std::string& item)
 {
-	char v_char = string[0];
+	char v_char = item[0];
 	int v_int = static_cast<int>(v_char);
 	float v_float = static_cast<float>(v_char);
 	double v_double = static_cast<double>(v_char);	
@@ -56,9 +57,9 @@ static void str_to_char(const std::string& string)
 	print(v_char, v_int, v_float, v_double);
 }
 
-static void str_to_int(const std::string& string)
+static void str_to_int(const std::string& item)
 {
-	const char *str = string.c_str();
+	const char *str = item.c_str();
 	char *end;
 
 	int v_int = std::strtol(str, &end, 10); //TODO: check that string was not too big to store long + long must be able to hold in int, check range
@@ -69,19 +70,22 @@ static void str_to_int(const std::string& string)
 	print(v_char, v_int, v_float, v_double);
 }
 
-void ScalarConverter::convert(const std::string& string)
+void ScalarConverter::convert(const std::string& item)
 {
-	Type type;
-	void (*func[])(const std::string& string) = {str_to_char, str_to_int};
-	
-	type = register_type(string);
+	Type type = register_type(item);
 	
 	switch (type)
 	{
 		case CHAR:
-			return func[0](string);
+		{
+			str_to_char(item);
+			break;	
+		}
 		case INT:
-			return func[1](string);
+		{
+			str_to_int(item);	
+			break;		
+		}
 		case UNKNOWN:
 			return ;
 	}
