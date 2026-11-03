@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:42:58 by admin             #+#    #+#             */
-/*   Updated: 2026/11/02 21:52:03 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/03 15:03:55 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include <string> 
 
-typedef enum e_type
+enum Type
 {
 	CHAR,
 	INT
-}	t_type;
+};
 
 class ScalarConverter
 {
