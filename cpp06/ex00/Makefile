@@ -5,7 +5,7 @@ SRC_DIR = src
 INC_DIR = include
 INC = -I$(INC_DIR)
 OBJ_DIR = obj
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp ScalarConverter.cpp type.cpp converter.cpp
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 NAME = cast
 
