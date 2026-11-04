@@ -6,10 +6,11 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:42:42 by admin             #+#    #+#             */
-/*   Updated: 2026/11/04 18:06:59 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/04 21:57:10 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include "Base.hpp"
@@ -33,8 +34,48 @@ Base* generate(void)
 	return NULL;
 }
 
+void identify(Base* p)
+{
+	if (dynamic_cast<A*>(p))
+		std::cout << "Object type: A" << std::endl;
+	if (dynamic_cast<B*>(p))
+		std::cout << "Object type: B" << std::endl;
+	if (dynamic_cast<C*>(p))
+		std::cout << "Object type: C" << std::endl;
+}
+
+void identify(Base& p)
+{
+	try
+	{
+		(void)dynamic_cast<A&>(p);
+		std::cout << "Object type: A" << std::endl;
+		return ;
+	}
+	catch(const std::bad_cast& e) {}
+
+	try
+	{
+		(void)dynamic_cast<B&>(p);
+		std::cout << "Object type: B" << std::endl;
+		return ;
+	}
+	catch(const std::bad_cast& e) {}
+
+	try
+	{
+		(void)dynamic_cast<C&>(p);
+		std::cout << "Object type: C" << std::endl;
+		return ;
+	}
+	catch(const std::bad_cast& e) {}
+}
+
 int main(void)
 {
 	Base* ptr = generate();
+	Base& ref = *ptr;
+	identify(ptr);
+	identify(ref);
 	delete ptr;
 }
