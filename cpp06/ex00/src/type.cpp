@@ -6,14 +6,24 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 19:33:10 by admin             #+#    #+#             */
-/*   Updated: 2026/11/03 20:21:45 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/04 12:15:18 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
-#include <algorithm>
 #include <cctype>
 #include "ScalarConverter.hpp"
+
+static bool isSpecial(const std::string& item)
+{
+	std::string array[6] = {"-inff", "+inff", "nanf", "-inf", "+inf", "nan"};
+	for (int i = 0; i < 6; i++)
+	{
+		if (array[i] == item)
+			return true;		
+	}
+	return false;
+}
 
 static bool isDouble(const std::string& item)
 {
@@ -66,11 +76,36 @@ static bool isFloat(const std::string& item)
 	return true;
 }
 
+static bool isInt(const std::string& item)
+{
+	size_t i = 0;
+
+	if (item[0] == '+' || item[0] == '-')
+		i++;
+	for (; i < item.size(); i++)
+	{
+		if (!std::isdigit(item[i]))
+			return false;
+	}
+	return true;
+}
+
+static bool isChar(const std::string& item)
+{
+	if (item.size() == 1 && !std::isdigit(item[0]))
+		return true;
+	if (item.size() == 3 && item[0] == '\'' && item[2] == '\'')
+		return true;
+	return false;
+}
+
 Type register_type(const std::string& item)
 {
-	if (item.size() == 1 && std::isalpha(item[0]))
+	if (isSpecial(item))
+		return SPECIAL;
+	if (isChar(item))
 		return CHAR;
-	if (item.find_first_not_of("0123456789") == std::string::npos)
+	if (isInt(item))
 		return INT;
 	if (isFloat(item))
 		return FLOAT;

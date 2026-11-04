@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:52:05 by admin             #+#    #+#             */
-/*   Updated: 2026/11/03 19:39:37 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/04 11:59:08 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,17 @@
 // Convert the string to an int
 // With static cast, convert int to other scalar types
 
-void print(char v_char, int v_int, float v_float, double v_double)
-{
-	std::cout << "char: " << v_char << std::endl;
-	std::cout << "int: " << v_int << std::endl;
-
-	std::cout << std::fixed << std::setprecision(1);
-	std::cout << "float: "  << v_float << 'f' << std::endl;
-	std::cout << "double: " << v_double << std::endl;	
-}
-
 void ScalarConverter::convert(const std::string& item)
 {
 	Type type = register_type(item);
 	
 	switch (type)
 	{
+		case SPECIAL:
+		{
+			str_to_special(item);
+			break;				
+		}
 		case CHAR:
 		{
 			str_to_char(item);
@@ -61,6 +56,8 @@ void ScalarConverter::convert(const std::string& item)
 			break;		
 		}
 		case UNKNOWN:
-			return ;
+		{
+			std::cout << item << ": unknown scalar type" << std::endl;
+		};
 	}
 }

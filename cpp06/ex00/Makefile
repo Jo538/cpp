@@ -7,7 +7,7 @@ INC = -I$(INC_DIR)
 OBJ_DIR = obj
 SRC = main.cpp ScalarConverter.cpp type.cpp converter.cpp
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
-NAME = cast
+NAME = convert
 
 all : $(NAME)
 

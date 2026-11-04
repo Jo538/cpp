@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:42:58 by admin             #+#    #+#             */
-/*   Updated: 2026/11/03 19:36:50 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/04 11:04:34 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 enum Type
 {
 	UNKNOWN,
+	SPECIAL,
 	CHAR,
 	INT,
 	FLOAT,
@@ -40,6 +41,8 @@ void str_to_char(const std::string& item);
 void str_to_int(const std::string& item);
 void str_to_float(const std::string& item);
 void str_to_double(const std::string& item);
+void str_to_special(const std::string& item);
 
 void print(char v_char, int v_int, float v_float, double v_double);
+
 #endif

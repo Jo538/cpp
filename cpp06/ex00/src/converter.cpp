@@ -6,25 +6,64 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 19:34:47 by admin             #+#    #+#             */
-/*   Updated: 2026/11/03 19:38:43 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/04 12:54:45 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <cctype>
 #include <cerrno>
 #include <limits>
+#include <iomanip>
+#include <cmath>
+#include <sstream>
 #include "ScalarConverter.hpp"
+
+// Significant digits each type can show reliably.
+static const int FLOAT_DIGITS = 7;
+static const int DOUBLE_DIGITS = 15;
+
+// Prints a float or double value.
+// - Whole numbers: fixed notation with one decimal ("42.0", "2147483648.0").
+// - Others: `precision` significant digits ("42.42", "453434.4"),
+//   with ".0" added if rounding removed every decimal.
+// `precision` should match the type the value came from:
+// 7 for a float, 15 for a double.
+static void print_floating(const std::string& label, double value,
+	const char *suffix, int precision)
+{
+	std::ostringstream out;
+
+	if (value == std::floor(value))
+		out << std::fixed << std::setprecision(1) << value;
+	else
+	{
+		out << std::setprecision(precision) << value;
+		if (out.str().find_first_of(".e") == std::string::npos)
+			out << ".0";
+	}
+	std::cout << label << ": " << out.str() << suffix << std::endl;
+}
 
 void str_to_char(const std::string& item)
 {
-	char v_char = item[0];
+	char v_char;
+	if (item.size() == 3)
+		v_char = item[1];
+	else
+		v_char = item[0];
 	int v_int = static_cast<int>(v_char);
 	float v_float = static_cast<float>(v_char);
 	double v_double = static_cast<double>(v_char);	
 	
-	print(v_char, v_int, v_float, v_double);
+	std::cout << "char: '" << v_char << "'" << std::endl;
+	std::cout << "int: " << v_int << std::endl;
+
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: "  << v_float << 'f' << std::endl;
+	std::cout << "double: " << v_double << std::endl;	
 }
 
 void str_to_int(const std::string& item)
@@ -32,24 +71,38 @@ void str_to_int(const std::string& item)
 	const char *str = item.c_str();
 	char *end;
 
+	errno = 0;
 	long tmp = std::strtol(str, &end, 10);
-	if (errno == ERANGE)
+	if (errno == ERANGE
+		|| tmp < std::numeric_limits<int>::min() || tmp > std::numeric_limits<int>::max())
 	{
-		std::cerr << "Error: long out of range" << std::endl;
+		// Too big for an int, but a float and a double can still hold it.
+		str_to_double(item);
 		return ;
-	}
-	if (tmp < std::numeric_limits<int>::min() || tmp > std::numeric_limits<int>::max())
-	{
-		std::cerr << "Error: int out of range" << std::endl;
-		return ;		
 	}
 	
 	int v_int = static_cast<int>(tmp);
-	char v_char = static_cast<char>(v_int);
 	float v_float = static_cast<float>(v_int);
 	double v_double = static_cast<double>(v_int);
 
-	print(v_char, v_int, v_float, v_double);
+	if (v_int < 0 || v_int > 255)
+	{
+		std::cout << "char: equivalent doesn't exist" << std::endl;
+	}
+	else if (!std::isprint(v_int))
+	{
+		std::cout << "char: not printable" << std::endl;
+	}
+	else
+	{
+		char v_char = static_cast<char>(v_int);
+		std::cout << "char: '" << v_char << "'" << std::endl;
+	}
+	
+	std::cout << "int: " << v_int << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: "  << v_float << 'f' << std::endl;
+	std::cout << "double: " << v_double << std::endl;	
 }
 
 void str_to_float(const std::string& item)
@@ -57,6 +110,7 @@ void str_to_float(const std::string& item)
 	const char *str = item.c_str();
 	char *end;
 	
+	errno = 0;
 	double tmp = std::strtod(str, &end);
 	if (errno == ERANGE)
 	{
@@ -70,18 +124,43 @@ void str_to_float(const std::string& item)
 	}
 
 	float v_float = static_cast<float>(tmp);
-	char v_char = static_cast<char>(v_float);
-	int v_int = static_cast<int>(v_float);
 	double v_double = static_cast<double>(v_float);
 
-	print(v_char, v_int, v_float, v_double);
+	if (v_float < 0 || v_float > 255)
+	{
+		std::cout << "char: equivalent doesn't exist" << std::endl;
+	}
+	else if (!std::isprint(v_float))
+	{
+		std::cout << "char: not printable" << std::endl;
+	}
+	else
+	{
+		char v_char = static_cast<char>(v_float);
+		std::cout << "char: '" << v_char << "'" << std::endl;
+	}
+	// Compare as double: INT_MAX rounds up to 2147483648 as a float.
+	if (v_double < std::numeric_limits<int>::min() || v_double > std::numeric_limits<int>::max())
+	{
+		std::cout << "int: out of range" << std::endl;
+	}
+	else
+	{
+		int v_int = static_cast<int>(v_float);		
+		std::cout << "int: " << v_int << std::endl;
+	}
+
+	// v_double came from a float, so it only carries a float's precision.
+	print_floating("float", v_float, "f", FLOAT_DIGITS);
+	print_floating("double", v_double, "", FLOAT_DIGITS);
 }
 
 void str_to_double(const std::string& item)
 {
 	const char *str = item.c_str();
 	char *end;
-	
+
+	errno = 0;
 	double v_double = std::strtod(str, &end);
 	if (errno == ERANGE)
 	{
@@ -89,9 +168,64 @@ void str_to_double(const std::string& item)
 		return ;
 	}
 
-	float v_float = static_cast<float>(v_double);
-	char v_char = static_cast<char>(v_float);
-	int v_int = static_cast<int>(v_float);
+	if (v_double < 0 || v_double > 255)
+	{
+		std::cout << "char: equivalent doesn't exist" << std::endl;
+	}
+	else if (!std::isprint(v_double))
+	{
+		std::cout << "char: not printable" << std::endl;
+	}
+	else
+	{
+		char v_char = static_cast<char>(v_double);
+		std::cout << "char: '" << v_char << "'" << std::endl;
+	}
 
-	print(v_char, v_int, v_float, v_double);
+	if (v_double < std::numeric_limits<int>::min() || v_double > std::numeric_limits<int>::max())
+	{
+		std::cout << "int: out of range" << std::endl;
+	}
+	else
+	{
+		int v_int = static_cast<int>(v_double);		
+		std::cout << "int: " << v_int << std::endl;
+	}
+
+	if (v_double < -std::numeric_limits<float>::max() || v_double > std::numeric_limits<float>::max())
+	{
+		std::cout << "float: out of range" << std::endl;
+	}
+	else
+	{
+		float v_float = static_cast<float>(v_double);
+		print_floating("float", v_float, "f", FLOAT_DIGITS);
+	}
+
+	print_floating("double", v_double, "", DOUBLE_DIGITS);
+}
+
+void str_to_special(const std::string& item)
+{
+	if (item == "nan" || item == "nanf")
+	{
+		std::cout << "char: equivalent doesn't exist" << std::endl; 
+		std::cout << "int: equivalent doesn't exist" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+	}
+	else if (item == "+inf" || item == "+inff")
+	{
+		std::cout << "char: equivalent doesn't exist" << std::endl;
+		std::cout << "int: equivalent doesn't exist" << std::endl;
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+	}
+	else if (item == "-inf" || item == "-inff")
+	{
+		std::cout << "char: equivalent doesn't exist" << std::endl;
+		std::cout << "int: equivalent doesn't exist" << std::endl;
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+	}	
 }
