@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:42:42 by admin             #+#    #+#             */
-/*   Updated: 2026/11/04 21:57:10 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/04 22:02:21 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+#include "color.h"
+
+static void	section(int number, const std::string& title)
+{
+	const std::string	line = "══════════════════════════════════════════════";
+
+	std::cout << "\n" << BOLD << line << "\n " << number << ". " << title
+		<< "\n" << line << COLOR_DEFAULT << std::endl;
+}
 
 Base* generate(void)
 {
@@ -73,9 +82,16 @@ void identify(Base& p)
 
 int main(void)
 {
+	section(1, "Create Random Object: A, B, or C");
 	Base* ptr = generate();
 	Base& ref = *ptr;
+	
+	section(2, "Identify Dynamic Object Type Using Pointer");
 	identify(ptr);
+
+	section(3, "Identify Dynamic Object Type Using Ref");
 	identify(ref);
+
+	section(4, "Delete Object");
 	delete ptr;
 }
