@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:52:05 by admin             #+#    #+#             */
-/*   Updated: 2026/11/04 11:59:08 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/06 13:47:19 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,9 @@
 #include <iomanip>
 #include "ScalarConverter.hpp"
 
-// char --> c
-// float --> 42.0f
-// double --> 42.0
-// int --> 42
-
-// std::string "42", I know it's an int
-// Convert the string to an int
-// With static cast, convert int to other scalar types
-
 void ScalarConverter::convert(const std::string& item)
-{
-	Type type = register_type(item);
-	
-	switch (type)
+{	
+	switch (register_type(item))
 	{
 		case SPECIAL:
 		{

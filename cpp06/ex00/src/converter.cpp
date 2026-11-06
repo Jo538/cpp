@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 19:34:47 by admin             #+#    #+#             */
-/*   Updated: 2026/11/04 12:54:45 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/06 13:47:09 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,9 @@
 #include <sstream>
 #include "ScalarConverter.hpp"
 
-// Significant digits each type can show reliably.
 static const int FLOAT_DIGITS = 7;
 static const int DOUBLE_DIGITS = 15;
 
-// Prints a float or double value.
-// - Whole numbers: fixed notation with one decimal ("42.0", "2147483648.0").
-// - Others: `precision` significant digits ("42.42", "453434.4"),
-//   with ".0" added if rounding removed every decimal.
-// `precision` should match the type the value came from:
-// 7 for a float, 15 for a double.
 static void print_floating(const std::string& label, double value,
 	const char *suffix, int precision)
 {
@@ -76,7 +69,6 @@ void str_to_int(const std::string& item)
 	if (errno == ERANGE
 		|| tmp < std::numeric_limits<int>::min() || tmp > std::numeric_limits<int>::max())
 	{
-		// Too big for an int, but a float and a double can still hold it.
 		str_to_double(item);
 		return ;
 	}
@@ -139,7 +131,6 @@ void str_to_float(const std::string& item)
 		char v_char = static_cast<char>(v_float);
 		std::cout << "char: '" << v_char << "'" << std::endl;
 	}
-	// Compare as double: INT_MAX rounds up to 2147483648 as a float.
 	if (v_double < std::numeric_limits<int>::min() || v_double > std::numeric_limits<int>::max())
 	{
 		std::cout << "int: out of range" << std::endl;
@@ -150,7 +141,6 @@ void str_to_float(const std::string& item)
 		std::cout << "int: " << v_int << std::endl;
 	}
 
-	// v_double came from a float, so it only carries a float's precision.
 	print_floating("float", v_float, "f", FLOAT_DIGITS);
 	print_floating("double", v_double, "", FLOAT_DIGITS);
 }
