@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:20:14 by admin             #+#    #+#             */
-/*   Updated: 2026/11/09 14:09:01 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/09 15:33:40 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ public:
 	// Element access
 	T& operator[](const int index);
 	T& getElement(size_t index);
-	size_t size();
+	size_t size() const;
 
 	// Whole-array helpers
 	void setArr(T item);
@@ -105,7 +105,7 @@ Array<T>::Array() : arr(NULL), _size(0)
 }
 
 template <typename T>
-Array<T>::Array(unsigned int n) : arr(new T[n]), _size(n)
+Array<T>::Array(unsigned int n) : arr(new T[n]()), _size(n)
 {
 	printMessage(SPEC_CONSTRUCTOR);
 }
@@ -114,7 +114,7 @@ template <typename T>
 Array<T>::Array(const Array& other)
 {
 	printMessage(COPY_CONSTRUCTOR);
-	this->arr = new T[other._size];
+	this->arr = new T[other._size]();
 	this->_size = other._size;
 	for (size_t i = 0; i < _size; i++)
 	{
@@ -127,9 +127,12 @@ Array<T>& Array<T>::operator=(const Array& other)
 {
 	printMessage(COPY_ASSIGN_OPERATOR);
 
+	if (this == &other)
+		return *this;
+
 	delete[] this->arr;
 	this->_size = other._size;
-	this->arr = new T[other._size];
+	this->arr = new T[other._size]();
 	for (size_t i = 0; i < _size; i++)
 	{
 		this->arr[i] = other.arr[i];
@@ -157,13 +160,13 @@ T& Array<T>::operator[](const int index)
 template <typename T>
 T& Array<T>::getElement(size_t index)
 {
-	if (index < 0 || index > _size)
+	if (index < 0 || index >= _size)
 		throw BadSubscript();
 	return this->arr[index];
 }
 
 template <typename T>
-size_t Array<T>::size()
+size_t Array<T>::size() const
 {
 	return this->_size;
 }
