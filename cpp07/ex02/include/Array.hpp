@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:20:14 by admin             #+#    #+#             */
-/*   Updated: 2026/11/09 13:14:03 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/09 13:39:50 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,12 @@ public:
 	Array(unsigned int n);
 	Array(const Array& other);
 	Array& operator=(const Array& other);
+	T& operator[](const int index);
 	~Array();
 
 	void setArr(T item);
 	std::string getArr() const;
+	T& getElement(const int index);
 };
 
 template<typename T>
@@ -55,6 +57,17 @@ std::ostream &operator<<(std::ostream &os, const Array<T>& other)
 	return os << other.getArr();
 }
 
+template<typename T>
+T& Array<T>::getElement(const int index)
+{
+	return this->arr[index];
+}
+
+template<typename T>
+T& Array<T>::operator[](const int index)
+{
+	return this->getElement(index);
+}
 
 template<typename T>
 const char* Array<T>::color = COLOR_DEFAULT;

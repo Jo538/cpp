@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:23:51 by admin             #+#    #+#             */
-/*   Updated: 2026/11/09 13:14:09 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/09 13:40:51 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ int main(void)
 	std::cout << "Array 2 --> " << copy_int << std::endl;
 	spec_int.setArr(4);
 	std::cout << "After: \nArray 1 --> " << spec_int << std::endl; 
-	std::cout << "Array 2 --> " << copy_int << std::endl;	
+	std::cout << "Array 2 --> " << copy_int << std::endl;
+
+	section(4, "Test [] overload");
+	std::cout << "Access array[1] --> "; 
+	std::cout << spec_int[1] << std::endl;
 	
 	section(4, "Call Destructors");
 }
