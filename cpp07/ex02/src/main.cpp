@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:23:51 by admin             #+#    #+#             */
-/*   Updated: 2026/11/09 13:40:51 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/09 14:05:05 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,28 @@ int main(void)
 	std::cout << "Array 2 --> " << copy_int << std::endl;
 
 	section(4, "Test [] overload");
-	std::cout << "Access array[1] --> "; 
-	std::cout << spec_int[1] << std::endl;
+	try
+	{
+		std::cout << "Access array[1] --> "; 
+		std::cout << spec_int[1] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	
-	section(4, "Call Destructors");
+	try
+	{
+		std::cout << "Access array[4] --> "; 
+		std::cout << spec_int[4] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	section(5, "Test size() function");
+	std::cout << "Size of array[3] --> " << spec_int.size() << std::endl;
+	
+	section(6, "Call Destructors");
 }
