@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:20:14 by admin             #+#    #+#             */
-/*   Updated: 2026/11/09 12:04:57 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/09 12:38:40 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ARRAY_HPP
 
 # include <iostream>
+# include <sstream>
+# include <typeinfo>
 # include "color.h"
 
 enum Action
@@ -32,14 +34,16 @@ private:
 	T* arr;
 	size_t size;
 	static const char* color;
+	
+	static void printMessage(Action item);
+	static std::string recogniseType();
+	static std::string recogniseAction(Action item);
 public:
 	Array();
 	Array(unsigned int n);
 	Array(const Array& other);
 	Array& operator=(const Array& other);
 	~Array();
-	
-	static void printMessage(Action item);
 };
 
 template<typename T>
@@ -96,37 +100,57 @@ Array<T>::~Array()
 }
 
 template<typename T>
-void Array<T>::printMessage(Action item)
+std::string Array<T>::recogniseType()
 {
-	std::cout << Array<T>::color << "[Array<>] " << COLOR_DEFAULT;
+	std::ostringstream out;
+	
+	if (typeid(T) == typeid(int))
+		out << "int";
+	if (typeid(T) == typeid(std::string))
+		out << "string";
+	return out.str();
+}
+
+template<typename T>
+std::string Array<T>::recogniseAction(Action item)
+{
+	std::ostringstream out;
+
 	switch(item)
 	{
 		case DEFAULT_CONSTRUCTOR:
 		{
-			std::cout << "Default constructor called" << std::endl;
+			out << "Default constructor called" << std::endl && break ;
 			break ;
 		}
 		case SPEC_CONSTRUCTOR:
 		{
-			std::cout << "Spec constructor called" << std::endl;
+			out << "Spec constructor called" << std::endl;
 			break ;
 		}
 		case COPY_CONSTRUCTOR:
 		{
-			std::cout << "Copy constructor called" << std::endl;
+			out << "Copy constructor called" << std::endl;
 			break ;
 		}
 		case COPY_ASSIGN_OPERATOR:
 		{
-			std::cout << "Copy assignment operator called" << std::endl;
+			out << "Copy assignment operator called" << std::endl;
 			break ;
 		}
 		case DESTRUCTOR:
-		{
-			std::cout << "Destructor called" << std::endl;
-			break ;
-		}
+			out << "Destructor called" << std::endl;
 	}
+	return out.str();
+}
+
+template<typename T>
+void Array<T>::printMessage(Action item)
+{
+	std::cout << Array<T>::color << "[Array<";
+	std::cout << recogniseType();
+	std::cout << ">] " << COLOR_DEFAULT;
+	std::cout << recogniseAction(item);
 }
 
 #endif
