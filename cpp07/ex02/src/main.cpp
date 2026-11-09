@@ -6,12 +6,13 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:23:51 by admin             #+#    #+#             */
-/*   Updated: 2026/11/08 18:23:45 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/09 11:00:15 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include <typeinfo>
 #include "Array.hpp"
 #include "color.h"
 
@@ -25,11 +26,17 @@ static void	section(int number, const std::string& title)
 
 int main(void)
 {
-	section(1, "Test canonical form on Array with INTS elements");
+	section(1, "Test canonical form on Array with INTS");
 	Array<int> default_int;
 	Array<int> spec_int(3);
 	Array<int> copy_int(spec_int);
 	default_int = spec_int;
 
-	section(2, "Call Destructors");
+	section(2, "Test canonical form on Array with STRINGS");
+	Array<std::string> default_str;
+	Array<std::string> spec_str(3);
+	Array<std::string> copy_str(spec_str);
+	default_str = spec_str;
+	
+	section(3, "Call Destructors");
 }
