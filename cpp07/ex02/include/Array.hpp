@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:20:14 by admin             #+#    #+#             */
-/*   Updated: 2026/11/09 12:38:40 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/09 13:14:03 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,17 @@ public:
 	Array(const Array& other);
 	Array& operator=(const Array& other);
 	~Array();
+
+	void setArr(T item);
+	std::string getArr() const;
 };
+
+template<typename T>
+std::ostream &operator<<(std::ostream &os, const Array<T>& other)
+{
+	return os << other.getArr();
+}
+
 
 template<typename T>
 const char* Array<T>::color = COLOR_DEFAULT;
@@ -72,6 +82,7 @@ Array<T>::Array(const Array& other)
 {
 	printMessage(COPY_CONSTRUCTOR);
 	this->arr = new T[other.size];
+	this->size = other.size;
 	for (size_t i = 0; i < size; i++)
 	{
 		this->arr[i] = other.arr[i];
@@ -84,6 +95,7 @@ Array<T>& Array<T>::operator=(const Array& other)
 	printMessage(COPY_ASSIGN_OPERATOR);
 
 	delete[] this->arr;
+	this->size = other.size;
 	this->arr = new T[other.size];
 	for (size_t i = 0; i < size; i++)
 	{
@@ -120,7 +132,7 @@ std::string Array<T>::recogniseAction(Action item)
 	{
 		case DEFAULT_CONSTRUCTOR:
 		{
-			out << "Default constructor called" << std::endl && break ;
+			out << "Default constructor called" << std::endl;
 			break ;
 		}
 		case SPEC_CONSTRUCTOR:
@@ -151,6 +163,28 @@ void Array<T>::printMessage(Action item)
 	std::cout << recogniseType();
 	std::cout << ">] " << COLOR_DEFAULT;
 	std::cout << recogniseAction(item);
+}
+
+template<typename T>
+void Array<T>::setArr(T item)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		this->arr[i] = item;
+	}
+}
+
+template<typename T>
+std::string Array<T>::getArr() const
+{
+	std::ostringstream out;
+
+	for (size_t i = 0; i < size; i++)
+	{
+		out << this->arr[i] << " ";
+	}
+	
+	return out.str();
 }
 
 #endif
