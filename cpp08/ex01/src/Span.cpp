@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:27:52 by admin             #+#    #+#             */
-/*   Updated: 2026/11/11 19:07:17 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/11 19:39:33 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,14 @@ Span& Span::operator=(const Span& other)
 	this->max = other.max;
 	this->set = other.set;
 	return *this;
+}
+
+unsigned int Span::getMax() const
+{
+	return this->max;
+}
+
+size_t Span::getSetSize() const
+{
+	return this->set.size();
 }

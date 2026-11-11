@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:00:28 by admin             #+#    #+#             */
-/*   Updated: 2026/11/11 18:50:56 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/11 19:39:42 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ public:
 	Span(const Span& other);
 	Span& operator=(const Span& other);
 	~Span();
+
+	unsigned int getMax() const;
+	size_t getSetSize() const;
 };
 
 #endif
