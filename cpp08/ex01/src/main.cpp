@@ -6,11 +6,12 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:51:53 by admin             #+#    #+#             */
-/*   Updated: 2026/11/11 20:02:08 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/12 12:47:02 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include "Span.hpp"
 #include "color.h"
 
@@ -69,6 +70,32 @@ int main(void)
 	Span c(b);
 	printAttributes(c);
 	printTestOutcome(c, 100, 0);
+
+	section(2, "Test addNumber()");
+	// c: add 10 random numbers to c object
+	for (int i = 0; i < 10; ++i)
+		c.addNumber(std::rand() % 100);
+	printAttributes(c);
+	std::cout << c << std::endl;
 	
-	section(2, "Call Destructors");
+	section(3, "Test assignment operator overload");
+	std::cout << "\nb: " << b << std::endl; 
+	std::cout << "c: " << c << std::endl; 
+
+	b = c;
+	
+	std::cout << "\nb: " << b << std::endl; 
+	std::cout << "c: " << c << std::endl; 
+
+	section(4, "Test deep copies");
+	std::cout << "\nb: " << b << std::endl; 
+	std::cout << "c: " << c << std::endl; 
+
+	for (int i = 0; i < 5; ++i)
+		c.addNumber(std::rand() % 100);
+	
+	std::cout << "\nb: " << b << std::endl; 
+	std::cout << "c: " << c << std::endl; 
+	
+	section(5, "Call Destructors");
 }

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:00:28 by admin             #+#    #+#             */
-/*   Updated: 2026/11/11 19:39:42 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/12 12:18:21 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,17 @@ public:
 	Span();
 	Span(unsigned int num);
 	Span(const Span& other);
-	Span& operator=(const Span& other);
 	~Span();
 
 	unsigned int getMax() const;
 	size_t getSetSize() const;
+	const std::multiset<int>& getSet() const;
+
+	void addNumber(int num);
+
+	Span& operator=(const Span& other);
 };
+
+std::ostream& operator<<(std::ostream& os, const Span& object);
 
 #endif

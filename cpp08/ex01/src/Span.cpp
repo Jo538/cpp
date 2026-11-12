@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:27:52 by admin             #+#    #+#             */
-/*   Updated: 2026/11/11 19:39:33 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/12 12:42:44 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,30 @@ unsigned int Span::getMax() const
 size_t Span::getSetSize() const
 {
 	return this->set.size();
+}
+
+void Span::addNumber(int num)
+{
+	this->set.insert(num);
+}
+
+const std::multiset<int>& Span::getSet() const
+{
+	return this->set;
+}
+
+std::ostream& operator<<(std::ostream& os, const Span& object)
+{
+	const std::multiset<int>& set = object.getSet();
+	if (set.empty())
+		return os << "empty";
+	const int* last_it  = &*(--set.end());
+	
+	for (std::multiset<int>::const_iterator it = set.begin(); it != set.end(); ++it)
+	{
+		os << *it;
+		if (&*it != last_it)
+			os << " ";		
+	}
+	return os;
 }
