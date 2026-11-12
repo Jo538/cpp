@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:51:53 by admin             #+#    #+#             */
-/*   Updated: 2026/11/12 12:47:02 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/12 13:02:00 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,24 @@ int main(void)
 	
 	std::cout << "\nb: " << b << std::endl; 
 	std::cout << "c: " << c << std::endl; 
+
+	section(5, "Test 10,000 numbers");
+	test('d', 10000, 10000);
+	Span d(10000);
+	for (int i = 0; i < 10000; ++i)
+		d.addNumber(std::rand() % 100);
+	printAttributes(d);
+	printTestOutcome(d, 10000, 10000);
 	
-	section(5, "Call Destructors");
+	section(6, "Add number to full set");
+	try
+	{
+		d.addNumber(42);
+	}
+	catch(const std::out_of_range& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	section(6, "Call Destructors");
 }

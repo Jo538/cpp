@@ -6,11 +6,12 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:27:52 by admin             #+#    #+#             */
-/*   Updated: 2026/11/12 12:42:44 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/12 13:00:57 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <stdexcept>
 #include "Span.hpp"
 
 unsigned int Span::DEFAULT_MAX = 10;
@@ -55,6 +56,8 @@ size_t Span::getSetSize() const
 
 void Span::addNumber(int num)
 {
+	if (this->set.size() == this->max)
+		throw std::out_of_range("Error: max number of ints reached");
 	this->set.insert(num);
 }
 
