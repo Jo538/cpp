@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:51:53 by admin             #+#    #+#             */
-/*   Updated: 2026/11/12 13:02:00 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/12 19:52:05 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ static void	section(int number, const std::string& title)
 		<< "\n" << line << COLOR_DEFAULT << std::endl;
 }
 
-static void test(char c, unsigned int max, unsigned int set_size)
+static void test(std::string message)
 {
-	std::cout << "\n" << BOLD << "▸ Span " << c
-	<< " - max = " << max << ", set_size = " << set_size << COLOR_DEFAULT << std::endl;
+	std::cout << "\n" << BOLD << "▸ " << message << COLOR_DEFAULT << std::endl;
 }
 
 static void printAttributes(const Span& item)
@@ -52,56 +51,59 @@ static void printTestOutcome(const Span& item, unsigned int expected_max, size_t
 	std::cout << COLOR_DEFAULT << std::endl;
 }
 
+static void addNumberRange(Span& obj, int size)
+{
+	for (int i = 0; i < size; ++i)
+		obj.addNumber(std::rand() % 100);
+}
+
 int main(void)
 {
 	section(1, "Call Constructors");
 	
-	test('a', 10, 0);
+	test("Span a - max = 10, set_size = 0");
 	Span a;
 	printAttributes(a);
 	printTestOutcome(a, 10, 0);
 	
-	test('b', 100, 0);
+	test("Span b - max = 100, set_size = 0");
 	Span b(100);
 	printAttributes(b);
 	printTestOutcome(b, 100, 0);
 	
-	test('c', 100, 0);
+	test("Span c - max = 100, set_size = 0");
 	Span c(b);
 	printAttributes(c);
 	printTestOutcome(c, 100, 0);
 
 	section(2, "Test addNumber()");
-	// c: add 10 random numbers to c object
-	for (int i = 0; i < 10; ++i)
-		c.addNumber(std::rand() % 100);
-	printAttributes(c);
-	std::cout << c << std::endl;
+	test("Add 10 random numbers to empty c");
+	std::cout << "before: " << c << std::endl;
+	addNumberRange(c, 10);
+	std::cout << "after: " << c << std::endl;
 	
 	section(3, "Test assignment operator overload");
-	std::cout << "\nb: " << b << std::endl; 
+	std::cout << "\nBefore -->\nb: " << b << std::endl; 
 	std::cout << "c: " << c << std::endl; 
 
 	b = c;
 	
-	std::cout << "\nb: " << b << std::endl; 
+	std::cout << "\nAfter -->\nb: " << b << std::endl; 
 	std::cout << "c: " << c << std::endl; 
 
 	section(4, "Test deep copies");
-	std::cout << "\nb: " << b << std::endl; 
+	std::cout << "\nBefore change:\nb: " << b << std::endl; 
 	std::cout << "c: " << c << std::endl; 
 
-	for (int i = 0; i < 5; ++i)
-		c.addNumber(std::rand() % 100);
+	addNumberRange(c, 5);
 	
-	std::cout << "\nb: " << b << std::endl; 
+	std::cout << "\nAfter change\nb: " << b << std::endl; 
 	std::cout << "c: " << c << std::endl; 
 
 	section(5, "Test 10,000 numbers");
-	test('d', 10000, 10000);
+	test("Span d - max = 10000, set_size = 10000");
 	Span d(10000);
-	for (int i = 0; i < 10000; ++i)
-		d.addNumber(std::rand() % 100);
+	addNumberRange(d, 10000);
 	printAttributes(d);
 	printTestOutcome(d, 10000, 10000);
 	
@@ -115,5 +117,29 @@ int main(void)
 		std::cerr << e.what() << '\n';
 	}
 	
-	section(6, "Call Destructors");
+	section(7, "Test longestSpan()");
+	test("call longestSpan() on b");
+	std::cout << "max = " << b.longestSpan() << std::endl;
+
+	section(8, "Test shortestSpan()");
+	test("call shortestSpan() on b");
+	std::cout << "min = " << b.shortestSpan() << std::endl;
+
+	section(9, "Test shortestSpan() on empty set");
+	try
+	{
+		std::cout << a.shortestSpan() << std::endl;
+	}
+	catch (std::logic_error& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	section(10, "Test addRange()");
+	test("call addRange() from arr = [42, 24, 2001]");
+	int arr[] = {42, 24, 2001};
+	a.addRange(arr, arr + 3);
+	std::cout << "a: " << a << std::endl;
+
+	section(11, "Call Destructors");
 }

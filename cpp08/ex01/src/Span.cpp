@@ -6,11 +6,12 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:27:52 by admin             #+#    #+#             */
-/*   Updated: 2026/11/12 13:00:57 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/12 19:24:07 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include <stdexcept>
 #include "Span.hpp"
 
@@ -64,6 +65,32 @@ void Span::addNumber(int num)
 const std::multiset<int>& Span::getSet() const
 {
 	return this->set;
+}
+
+int Span::longestSpan()
+{
+	if (this->set.empty() || (this->set.size() == 1))
+		throw std::logic_error("Error: set is empty or has only 1 element");
+	int min = *(this->set.begin());
+	int max = *(--this->set.end());
+	
+	return (std::abs(max - min));
+}
+
+int Span::shortestSpan()
+{
+	int min = this->longestSpan();
+	
+	std::multiset<int>::const_iterator current = this->set.begin();
+	std::multiset<int>::const_iterator next = current;
+	++next;
+	
+	for (; next != this->set.end(); ++current, ++next)
+	{
+		if ((*next - *current) < min)
+			min = (*next - *current);
+	}
+	return min;
 }
 
 std::ostream& operator<<(std::ostream& os, const Span& object)

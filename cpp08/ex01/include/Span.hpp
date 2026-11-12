@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 18:00:28 by admin             #+#    #+#             */
-/*   Updated: 2026/11/12 12:54:30 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/12 19:24:01 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ private:
 	static unsigned int DEFAULT_MAX;
 	unsigned int max;
 	std::multiset<int> set;
+
 public:
 	Span();
 	Span(unsigned int num);
@@ -32,6 +33,10 @@ public:
 	const std::multiset<int>& getSet() const;
 
 	void addNumber(int num);
+	template <typename T>
+	void addRange(T begin, T end) { this->set.insert(begin, end); };
+	int longestSpan();
+	int shortestSpan();
 
 	Span& operator=(const Span& other);
 };
