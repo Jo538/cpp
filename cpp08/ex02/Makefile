@@ -7,7 +7,7 @@ INC = -I$(INC_DIR)
 OBJ_DIR = obj
 SRC = main.cpp
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
-NAME = easyfind
+NAME = stack
 
 all : $(NAME)
 
