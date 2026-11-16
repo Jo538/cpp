@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 20:12:57 by admin             #+#    #+#             */
-/*   Updated: 2026/11/16 10:18:20 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 10:56:02 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,22 @@ void MutantStack<T>::printMessage(std::string message) const
 		std::cout << "int>] ";
 	if (typeid(T) == typeid(std::string))
 		std::cout << "std::string>] ";
-	std::cout << message << COLOR_DEFAULT << std::endl;
+	std::cout << COLOR_DEFAULT << message << std::endl;
+}
+
+template <typename T>
+void MutantStack<T>::populateFromArr(T* arr, size_t length)
+{
+	this->c.insert(this->begin(), arr, arr + length);
+}
+
+template <typename T>
+void MutantStack<T>::printContainer() const
+{
+	const_iterator it = this->begin();
+	const_iterator ite = this->end();
+
+	for (; it != ite; ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 20:07:29 by admin             #+#    #+#             */
-/*   Updated: 2026/11/16 10:11:58 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 10:54:24 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,13 @@ int main(void)
 	MutantStack<int> a;
 	MutantStack<std::string> b;
 
-	section(2, "Call destructors");
+	section(2, "Populate stack & retrieve content");
+	
+	a.populateFromArr((int[]){42, 51, 99}, 3);
+	a.printContainer();	
+
+	b.populateFromArr((std::string[]){"Havana", "and", "Pollux"}, 3);
+	b.printContainer();	
+
+	section(3, "Call destructors");
 }

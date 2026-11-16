@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 19:59:40 by admin             #+#    #+#             */
-/*   Updated: 2026/11/16 10:11:07 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 10:51:49 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ public:
 	typedef typename std::deque<T>::const_iterator const_iterator;
 	const_iterator begin() const;
 	const_iterator end() const;
+
+	void populateFromArr(T* arr, size_t length);
+	void printContainer() const;
 };
 
 
