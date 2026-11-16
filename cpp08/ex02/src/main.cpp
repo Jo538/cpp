@@ -6,43 +6,28 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 20:07:29 by admin             #+#    #+#             */
-/*   Updated: 2026/11/13 12:14:21 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 10:11:58 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "MutantStack.hpp"
+#include "color.h"
+
+static void	section(int number, const std::string& title)
+{
+	const std::string	line = "══════════════════════════════════════════════";
+
+	std::cout << "\n" << BOLD << line << "\n " << number << ". " << title
+		<< "\n" << line << COLOR_DEFAULT << std::endl;
+}
 
 int main(void)
 {
-	MutantStack<int> mstack;
+	section(1, "Call default constructor, MutantStack");
+	
+	MutantStack<int> a;
+	MutantStack<std::string> b;
 
-	mstack.push(5);
-	mstack.push(17);
-
-	std::cout << mstack.top() << std::endl;
-	mstack.pop();
-	
-	std::cout << mstack.size() << std::endl;
-	
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-	mstack.push(0);
-
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	
-	++it;
-	--it;
-	
-	while (it != ite)
-	{
-		std::cout << *it << std::endl;
-		++it;
-	}
-	
-	std::stack<int> s(mstack);
-	
-	return 0;
+	section(2, "Call destructors");
 }

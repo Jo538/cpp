@@ -6,10 +6,11 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 20:12:57 by admin             #+#    #+#             */
-/*   Updated: 2026/11/13 16:00:47 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 10:18:20 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <typeinfo>
 #include "MutantStack.hpp"
 #include <color.h>
 
@@ -20,33 +21,31 @@ template<>
 const char* MutantStack<int>::color = COLOR_BLUE;
 
 template<>
-const char* MutantStack<int>::color = COLOR_MAGENTA;
-
-template<>
-const char* MutantStack<int>::color = COLOR_YELLOW;
+const char* MutantStack<std::string>::color = COLOR_MAGENTA;
 
 template <typename T>
 MutantStack<T>::MutantStack()
 {
-	
+	printMessage("Default constructor called");
 }
 
 template <typename T>
 MutantStack<T>::MutantStack(const MutantStack<T>&)
 {
-	
+	printMessage("Copy constructor called");
 }
 
 template <typename T>
 MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>&)
 {
+	printMessage("Copy assignment operator called");
 	return *this;
 }
 
 template <typename T>
 MutantStack<T>::~MutantStack()
 {
-	
+	printMessage("Destructor called");
 }
 
 template <typename T>
@@ -74,7 +73,12 @@ typename MutantStack<T>::const_iterator MutantStack<T>::end() const
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& os, const MutantStack<T>& container)
+void MutantStack<T>::printMessage(std::string message) const
 {
-	return os << container.top();
+	std::cout << this->color << "[MutantStack<";
+	if (typeid(T) == typeid(int))
+		std::cout << "int>] ";
+	if (typeid(T) == typeid(std::string))
+		std::cout << "std::string>] ";
+	std::cout << message << COLOR_DEFAULT << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 19:59:40 by admin             #+#    #+#             */
-/*   Updated: 2026/11/13 15:56:00 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 10:11:07 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class MutantStack : public std::stack<T>
 {
 private:
 	static const char* color;
+	
+	void printMessage(std::string message) const;
 	
 public:
 
