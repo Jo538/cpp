@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 20:12:57 by admin             #+#    #+#             */
-/*   Updated: 2026/11/16 10:56:02 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 11:20:23 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ void MutantStack<T>::printMessage(std::string message) const
 template <typename T>
 void MutantStack<T>::populateFromArr(T* arr, size_t length)
 {
-	this->c.insert(this->begin(), arr, arr + length);
+	for (size_t i = 0; i < length; ++i)
+		this->push(arr[i]);
+	// this->c.insert(this->begin(), arr, arr + length); improved version
 }
 
 template <typename T>
