@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 20:07:29 by admin             #+#    #+#             */
-/*   Updated: 2026/11/16 11:50:03 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 11:58:48 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ static void printTestOutcome(bool outcome)
 	
 }
 
+static void	test(const std::string& what)
+{
+	std::cout << "\n" << BOLD << "▸ " << what << COLOR_DEFAULT << std::endl;
+}
+
 int main(void)
 {
 	section(1, "Call default constructor, MutantStack");
@@ -60,23 +65,31 @@ int main(void)
 	std::string arr_str[] = {"Havana", "and", "Pollux"};
 	
 	a.populateFromArr(arr_int, 3);
+	test("Iterate through MutantStack<int> a  = [42, 51, 99]");
 	a.printContainer();	
 
 	b.populateFromArr(arr_str, 3);
+	test("Iterate through MutantStack<std::string> b  = [\"Havana\", \"and\", \"Pollux\"]");
 	b.printContainer();
 
 	section(3, "Compare MutantStack with vs std::vector");
 	std::vector<int> c(arr_int, arr_int + 3);
 	std::vector<std::string> d(arr_str, arr_str + 3);
 
+	test("std::vector<int>c & MutantStack<int>a = [42, 51, 99]");
 	printTestOutcome(compareContainers(a, c));
+
+	test("std::vector<std::string>d & MutantStack<std::string>b = [\"Havana\", \"and\", \"Pollux\"]");
 	printTestOutcome(compareContainers(b, d));
 
 	section(4, "Compare MutantStack with vs std::list");
 	std::list<int> e(arr_int, arr_int + 3);
 	std::list<std::string> f(arr_str, arr_str + 3);
 
+	test("std::list<int>e & MutantStack<int>a = [42, 51, 99]");
 	printTestOutcome(compareContainers(a, e));
+
+	test("std::list<std::string>f & MutantStack<std::string>b = [\"Havana\", \"and\", \"Pollux\"]");
 	printTestOutcome(compareContainers(b, f));
 	
 	section(5, "Call destructors");
