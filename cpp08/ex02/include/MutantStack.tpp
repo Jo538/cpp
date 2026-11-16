@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 20:12:57 by admin             #+#    #+#             */
-/*   Updated: 2026/11/16 11:20:23 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 14:34:09 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ MutantStack<T>::MutantStack()
 }
 
 template <typename T>
-MutantStack<T>::MutantStack(const MutantStack<T>&)
+MutantStack<T>::MutantStack(const MutantStack<T>& other) : std::stack<T>(other)
 {
 	printMessage("Copy constructor called");
 }
 
 template <typename T>
-MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>&)
+MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& other)
 {
 	printMessage("Copy assignment operator called");
+	std::stack<T>::operator=(other);
 	return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 20:07:29 by admin             #+#    #+#             */
-/*   Updated: 2026/11/16 11:58:48 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/16 14:45:46 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,22 @@ int main(void)
 	test("Iterate through MutantStack<std::string> b  = [\"Havana\", \"and\", \"Pollux\"]");
 	b.printContainer();
 
-	section(3, "Compare MutantStack with vs std::vector");
+	section(3, "Call copy constructor, MutantStack");
+	test("Copy a = [42, 51, 99]");
+	MutantStack<int> g(a);
+	std::cout << "New MutantStack: ";
+	g.printContainer();
+	printTestOutcome(compareContainers(a, g));
+
+	section(4, "Call copy assignment operator, MutantStack");
+	MutantStack<std::string> h;
+	std::cout << "MutantStack before copy: " << (h.empty() ? "empty\n" : "not empty\n");
+	h = b;
+	std::cout << "MutantStack after copy: ";
+	h.printContainer();
+	printTestOutcome(compareContainers(b, h));	
+
+	section(5, "Compare MutantStack with vs std::vector");
 	std::vector<int> c(arr_int, arr_int + 3);
 	std::vector<std::string> d(arr_str, arr_str + 3);
 
@@ -82,7 +97,7 @@ int main(void)
 	test("std::vector<std::string>d & MutantStack<std::string>b = [\"Havana\", \"and\", \"Pollux\"]");
 	printTestOutcome(compareContainers(b, d));
 
-	section(4, "Compare MutantStack with vs std::list");
+	section(6, "Compare MutantStack with vs std::list");
 	std::list<int> e(arr_int, arr_int + 3);
 	std::list<std::string> f(arr_str, arr_str + 3);
 
@@ -92,5 +107,5 @@ int main(void)
 	test("std::list<std::string>f & MutantStack<std::string>b = [\"Havana\", \"and\", \"Pollux\"]");
 	printTestOutcome(compareContainers(b, f));
 	
-	section(5, "Call destructors");
+	section(7, "Call destructors");
 }
