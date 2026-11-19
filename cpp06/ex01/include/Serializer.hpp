@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 15:55:24 by admin             #+#    #+#             */
-/*   Updated: 2026/11/04 16:25:52 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/19 11:11:15 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 
-# include <cstdint>
+# include <stdint.h>
 
 class Data;
 

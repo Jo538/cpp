@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:42:42 by admin             #+#    #+#             */
-/*   Updated: 2026/11/04 22:02:21 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/19 11:27:41 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void identify(Base& p)
 		std::cout << "Object type: A" << std::endl;
 		return ;
 	}
-	catch(const std::bad_cast& e) {}
+	catch(const std::exception& e) {}
 
 	try
 	{
@@ -69,7 +69,7 @@ void identify(Base& p)
 		std::cout << "Object type: B" << std::endl;
 		return ;
 	}
-	catch(const std::bad_cast& e) {}
+	catch(const std::exception& e) {}
 
 	try
 	{
@@ -77,7 +77,7 @@ void identify(Base& p)
 		std::cout << "Object type: C" << std::endl;
 		return ;
 	}
-	catch(const std::bad_cast& e) {}
+	catch(const std::exception& e) {}
 }
 
 int main(void)
