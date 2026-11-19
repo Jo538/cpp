@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:20:14 by admin             #+#    #+#             */
-/*   Updated: 2026/11/09 15:33:40 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/19 16:16:59 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ public:
 	~Array();
 
 	// Element access
-	T& operator[](const int index);
+	T& operator[](size_t index);
 	T& getElement(size_t index);
 	size_t size() const;
 
@@ -152,7 +152,7 @@ Array<T>::~Array()
 /* ************************************************************************** */
 
 template <typename T>
-T& Array<T>::operator[](const int index)
+T& Array<T>::operator[](size_t index)
 {
 	return this->getElement(index);
 }
@@ -160,7 +160,7 @@ T& Array<T>::operator[](const int index)
 template <typename T>
 T& Array<T>::getElement(size_t index)
 {
-	if (index < 0 || index >= _size)
+	if (index >= _size)
 		throw BadSubscript();
 	return this->arr[index];
 }
