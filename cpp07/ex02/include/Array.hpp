@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:20:14 by admin             #+#    #+#             */
-/*   Updated: 2026/11/19 16:16:59 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/19 16:57:15 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ const char* Array<std::string>::color = COLOR_MAGENTA;
 /* ************************************************************************** */
 
 template <typename T>
-Array<T>::Array() : arr(NULL), _size(0)
+Array<T>::Array() : arr(new T[0]()), _size(0)
 {
 	printMessage(DEFAULT_CONSTRUCTOR);
 }
