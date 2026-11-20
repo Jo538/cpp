@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 15:44:25 by admin             #+#    #+#             */
-/*   Updated: 2026/11/11 17:12:43 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/19 17:24:04 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,13 @@ static void	test(int num, const ContainerType type, const T& container)
 	{
 		case VECTOR:
 			std::cout << "vector";
+			break;
 		case DEQUE:
 			std::cout << "double-ended queue";
+			break;
 		case LIST:
 			std::cout << "list";
+			break;
 	}
 	std::cout << " [";
 	

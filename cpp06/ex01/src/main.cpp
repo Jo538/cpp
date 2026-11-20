@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 16:16:12 by admin             #+#    #+#             */
-/*   Updated: 2026/11/04 16:49:09 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/19 11:11:49 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <cstdint>
+#include <stdint.h>
 #include "Data.hpp"
 #include "Serializer.hpp"
 #include "color.h"
