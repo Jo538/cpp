@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:51:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/20 18:22:07 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/20 18:27:19 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ private:
 	
 public:
 	BitcoinExchange() {};
-	BitcoinExchange(const BitcoinExchange& other) : fx(other.fx), price(other.price) {};
+	BitcoinExchange(const BitcoinExchange& other);
 	~BitcoinExchange() {};
 
-	BitcoinExchange& operator=(const BitcoinExchange& other) { fx = other.fx; price = other.price; return *this;};
+	BitcoinExchange& operator=(const BitcoinExchange& other);
 	 
 };
 
