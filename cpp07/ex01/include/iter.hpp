@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 13:20:14 by admin             #+#    #+#             */
-/*   Updated: 2026/11/08 14:08:23 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/23 11:42:04 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void printValue(T& var)
 	std::cout << var << std::endl;
 }
 
-template <typename T>
-void iter(T* address, int length, void (*func)(T&))
+template <typename C, typename T>
+void iter(C* address, int length, void (*func)(T&))
 {
 	for (int i = 0; i < length; i++)
 	{
