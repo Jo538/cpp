@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:16:05 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 12:34:33 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/23 12:46:51 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int main(int argc, char** argv)
 	std::cout << "first: " << it2->first
 	          << "\nsecond: " << it2->second << std::endl; 
 
+	test.print(it, it2);
 	return 0;
 }

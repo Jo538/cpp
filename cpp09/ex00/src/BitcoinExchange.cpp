@@ -6,10 +6,11 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:25:16 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 12:39:23 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/23 12:51:05 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include <string>
 #include <limits>
 #include <fstream>
@@ -66,4 +67,15 @@ BitcoinExchange::const_it BitcoinExchange::getPair(Map type) const
 			break;
 	}
 	return it;
+}
+
+float BitcoinExchange::product(const_it& itPrice, const_it& itFX) const
+{
+	return (itPrice->second * itFX->second);
+}
+
+void BitcoinExchange::print(const_it& itPrice, const_it& itFX)
+{
+	std::cout << "date | value\n";
+	std::cout << itPrice->first << ", " << itFX->second << " ==> " << product(itPrice, itFX) << std::endl;
 }

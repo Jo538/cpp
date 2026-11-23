@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:51:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 12:39:01 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/23 12:44:52 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ public:
 	BitcoinExchange& operator=(const BitcoinExchange& other);
 
 	void parseMap(const std::string& file, Map type);
+	void print(const_it& itPrice, const_it& itFX);
 
 	const_it getPair(Map type) const;
 
@@ -37,7 +38,7 @@ private:
 	ExchangeMap _fx;
 	ExchangeMap _price;
 
-	float product(const_it itPrice, const_it itFX) const;
+	float product(const_it& itPrice, const_it& itFX) const;
 	
 };
 
