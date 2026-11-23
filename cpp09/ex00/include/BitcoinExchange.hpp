@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:51:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/22 17:19:06 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/23 11:57:50 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,10 @@ public:
 	ExchangeMap::const_iterator getExchangePair() const;
 
 private:
-	ExchangeMap fx;
-	ExchangeMap price;
+	ExchangeMap _fx;
+	ExchangeMap _price;
 	
 };
 
-// I want to read a pair inside my multimap. 
-// How?
-// Return a const ref to multimap? Think I can't
-// Return an iterator pointing to the pair? Think best
 
 #endif
