@@ -6,11 +6,13 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:25:16 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 12:51:05 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/23 16:24:10 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <algorithm>
+#include <iomanip>
 #include <string>
 #include <limits>
 #include <fstream>
@@ -27,20 +29,14 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 	return *this;
 }
 
-void BitcoinExchange::parseMap(const std::string& file, Map type)
+void BitcoinExchange::parsePair(std::ifstream& inFile, Map type)
 {
-	std::ifstream inFile(file.c_str());
-	
-	if (!inFile)
-		throw std::runtime_error("Error: Failed to open input file");
-	
-	inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	
 	std::string date;
 	float value;
 
 	std::getline(inFile, date, ',');
 	inFile >> value;
+	inFile.ignore();
 	
 	switch(type)
 	{
@@ -53,20 +49,17 @@ void BitcoinExchange::parseMap(const std::string& file, Map type)
 	}
 }
 
-BitcoinExchange::const_it BitcoinExchange::getPair(Map type) const
+void BitcoinExchange::parseMap(const std::string& file, Map type)
 {
-	const_it it;
+	std::ifstream inFile(file.c_str());
 	
-	switch(type)
-	{
-		case PRICE:
-			it = _price.begin();
-			break;
-		case FX:
-			it = _fx.begin();
-			break;
-	}
-	return it;
+	if (!inFile)
+		throw std::runtime_error("Error: Failed to open input file");
+	
+	inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	
+	while (inFile)
+		parsePair(inFile, type);	
 }
 
 float BitcoinExchange::product(const_it& itPrice, const_it& itFX) const
@@ -74,8 +67,30 @@ float BitcoinExchange::product(const_it& itPrice, const_it& itFX) const
 	return (itPrice->second * itFX->second);
 }
 
-void BitcoinExchange::print(const_it& itPrice, const_it& itFX)
+void BitcoinExchange::format(const_it& itPrice, const_it& itFX)
 {
-	std::cout << "date | value\n";
-	std::cout << itPrice->first << ", " << itFX->second << " ==> " << product(itPrice, itFX) << std::endl;
+	const int padding = 12;
+	
+	std::cout << std::setw(padding) << std::left << itPrice->first << "| "
+	          << itPrice->second << " * " << itFX->second
+	          << " ==> " << product(itPrice, itFX);
+		
+	if (itPrice->first != itFX->first)	
+		 std::cout << " [FX closest date match: " << itFX->first << "]";
+	std::cout << std::endl;		
+}
+
+void BitcoinExchange::print()
+{
+	const_it itPrice = _price.begin();
+	const_it itePrice = _price.end();
+
+	const_it itFX;
+	
+	for (; itPrice != itePrice; ++itPrice)
+	{
+		itFX = _fx.upper_bound(itPrice->first);
+		--itFX;
+		format(itPrice, itFX);
+	}
 }
