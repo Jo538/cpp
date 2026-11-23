@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:16:05 by admin             #+#    #+#             */
-/*   Updated: 2026/11/22 17:28:27 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/23 12:34:33 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,15 @@ int main(int argc, char** argv)
 	std::string priceFile = argv[1];
 	BitcoinExchange test;
 	
-	test.parsePrices(priceFile);
-	BitcoinExchange::ExchangeMap::const_iterator it = test.getExchangePair();
+	test.parseMap(priceFile, BitcoinExchange::PRICE);
+	BitcoinExchange::ExchangeMap::const_iterator it = test.getPair(BitcoinExchange::PRICE);
 	std::cout << "first: " << it->first
 	          << "\nsecond: " << it->second << std::endl; 
-	
+
+	test.parseMap("data.csv", BitcoinExchange::FX);
+	BitcoinExchange::ExchangeMap::const_iterator it2 = test.getPair(BitcoinExchange::FX);
+	std::cout << "first: " << it2->first
+	          << "\nsecond: " << it2->second << std::endl; 
+
 	return 0;
 }

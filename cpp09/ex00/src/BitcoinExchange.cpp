@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:25:16 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 12:00:55 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/23 12:32:15 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 	return *this;
 }
 
-void BitcoinExchange::parsePrices(const std::string& priceFile)
+void BitcoinExchange::parseMap(const std::string& file, Map type)
 {
-	std::ifstream inFile(priceFile.c_str());
+	std::ifstream inFile(file.c_str());
 	
 	if (!inFile)
 		throw std::runtime_error("Error: Failed to open input file");
@@ -36,18 +36,34 @@ void BitcoinExchange::parsePrices(const std::string& priceFile)
 	inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
 	std::string date;
-	float price;
+	float value;
 
 	std::getline(inFile, date, ',');
-	inFile >> price;
+	inFile >> value;
 	
-	_price.insert(std::make_pair(date, price));
-		
+	switch(type)
+	{
+		case PRICE:
+			_price.insert(std::make_pair(date, value));
+			break;
+		case FX:
+			_fx.insert(std::make_pair(date, value));
+			break;
+	}
 }
 
-BitcoinExchange::ExchangeMap::const_iterator BitcoinExchange::getExchangePair() const
+BitcoinExchange::ExchangeMap::const_iterator BitcoinExchange::getPair(Map type) const
 {
-	ExchangeMap::const_iterator it = _price.begin();
+	ExchangeMap::const_iterator it;
 	
+	switch(type)
+	{
+		case PRICE:
+			it = _price.begin();
+			break;
+		case FX:
+			it = _fx.begin();
+			break;
+	}
 	return it;
 }
