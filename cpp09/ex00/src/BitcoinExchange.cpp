@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:25:16 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 12:32:15 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/23 12:39:23 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void BitcoinExchange::parseMap(const std::string& file, Map type)
 	}
 }
 
-BitcoinExchange::ExchangeMap::const_iterator BitcoinExchange::getPair(Map type) const
+BitcoinExchange::const_it BitcoinExchange::getPair(Map type) const
 {
-	ExchangeMap::const_iterator it;
+	const_it it;
 	
 	switch(type)
 	{

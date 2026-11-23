@@ -6,7 +6,7 @@
 /*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:51:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 12:24:12 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/23 12:39:01 by jchartie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ class BitcoinExchange
 {	
 public:
 	typedef std::multimap<std::string, float> ExchangeMap;
+	typedef ExchangeMap::const_iterator const_it;
+	
 	enum Map {PRICE, FX};
 
 	BitcoinExchange() {};
@@ -29,11 +31,13 @@ public:
 
 	void parseMap(const std::string& file, Map type);
 
-	ExchangeMap::const_iterator getPair(Map type) const;
+	const_it getPair(Map type) const;
 
 private:
 	ExchangeMap _fx;
 	ExchangeMap _price;
+
+	float product(const_it itPrice, const_it itFX) const;
 	
 };
 
