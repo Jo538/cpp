@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:25:16 by admin             #+#    #+#             */
-/*   Updated: 2026/11/24 19:04:26 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/24 19:31:01 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 	return *this;
 }
 
-void BitcoinExchange::parsePair(std::ifstream& inFile, Map type)
+void BitcoinExchange::parsePair(std::string& line, Map type)
 {
+	std::istringstream fields(line);
+	
 	std::string date;
-	float value;
+	std::getline(fields, date, ',');
 
-	std::getline(inFile, date, ',');
-	inFile >> value;
-	inFile.ignore();
+	float value;
+	fields >> value;
 	
 	switch(type)
 	{
@@ -59,8 +60,10 @@ void BitcoinExchange::parseMap(const std::string& file, Map type)
 	
 	inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
-	while (inFile)
-		parsePair(inFile, type);	
+	std::string line;
+	
+	while (std::getline(inFile, line))
+		parsePair(line, type);	
 }
 
 float BitcoinExchange::product(const_it& itPrice, const_it& itFX) const
@@ -138,12 +141,14 @@ bool BitcoinExchange::hasRightDateFormat(const_it& itPrice)
 
 bool BitcoinExchange::isGoodInput(const_it& itPrice)
 {
+	const int padding = 12;
+	
 	if (!hasRightDateFormat(itPrice))
 		return false;
 	
 	if (itPrice->second < 0 || itPrice->second > 1000)
 	{
-		std::cerr << "Error: Price not within [0, 1000] range\n";
+		std::cerr << std::setw(padding) << std::left << itPrice->first << "| " << "Error: Price not within [0, 1000] range\n";
 		return false;
 	}
 	

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:51:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/24 18:56:06 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/24 19:28:58 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 	BitcoinExchange& operator=(const BitcoinExchange& other);
 
 	void parseMap(const std::string& file, Map type);
-	void parsePair(std::ifstream& inFile, Map type);
+	void parsePair(std::string& line, Map type);
 	void print();
 
 private:
