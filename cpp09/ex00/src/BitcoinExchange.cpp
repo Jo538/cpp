@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:25:16 by admin             #+#    #+#             */
-/*   Updated: 2026/11/24 19:31:01 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/24 20:48:45 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <stdexcept>
 #include "BitcoinExchange.hpp"
 
+const int BitcoinExchange::PADDING;
+
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _fx(other._fx), _price(other._price) {}
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) 
@@ -30,15 +32,19 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 	return *this;
 }
 
-void BitcoinExchange::parsePair(std::string& line, Map type)
+void BitcoinExchange::parsePair(const std::string& line, Map type)
 {
 	std::istringstream fields(line);
 	
 	std::string date;
-	std::getline(fields, date, ',');
+	if (type == PRICE)
+		std::getline(fields, date, '|');
+	if (type == FX)
+		std::getline(fields, date, ',');
 
-	float value;
-	fields >> value;
+	float value = 0;
+	if (fields.good())
+		fields >> value;
 	
 	switch(type)
 	{
@@ -51,56 +57,51 @@ void BitcoinExchange::parsePair(std::string& line, Map type)
 	}
 }
 
-void BitcoinExchange::parseMap(const std::string& file, Map type)
+int BitcoinExchange::parseMap(const std::string& file, Map type)
 {
 	std::ifstream inFile(file.c_str());
 	
 	if (!inFile)
-		throw std::runtime_error("Error: Failed to open input file");
+	{
+		std::cerr << "Error: Failed to open input file\n";
+		return 1;		
+	}
 	
 	inFile.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
 	std::string line;
-	
+
 	while (std::getline(inFile, line))
-		parsePair(line, type);	
+		parsePair(line, type);
+	return 0;	
 }
 
-float BitcoinExchange::product(const_it& itPrice, const_it& itFX) const
+double BitcoinExchange::product(const_it& itPrice, const_it& itFX) const
 {
 	return (itPrice->second * itFX->second);
 }
 
 void BitcoinExchange::format(const_it& itPrice, const_it& itFX)
 {
-	const int padding = 12;
-	
-	std::cout << std::setw(padding) << std::left << itPrice->first << "| "
+	std::cout << std::setw(PADDING) << std::left << itPrice->first << "| "
 	          << itPrice->second << " * " << itFX->second
-	          << " ==> " << product(itPrice, itFX);
-		
-	if (itPrice->first != itFX->first)	
-		 std::cout << " [FX closest date match: " << itFX->first << "]";
-	std::cout << std::endl;		
+	          << " ==> " << product(itPrice, itFX) << std::endl;		
 }
 
 void BitcoinExchange::print()
 {
 	const_it itPrice = _price.begin();
 	const_it itePrice = _price.end();
-
-	const_it itFX;
 	
 	for (; itPrice != itePrice; ++itPrice)
 	{
 		if (!isGoodInput(itPrice))
 			continue;
-		itFX = _fx.upper_bound(itPrice->first);
+		const_it itFX = _fx.upper_bound(itPrice->first);
 		if (itFX == _fx.begin())
 		{
-			const int padding = 12;
-			std::cerr << std::setw(padding) << std::left << itPrice->first << "| " << "Error: No FX satisfies this date\n";
-			return ;
+			std::cerr << std::setw(PADDING) << std::left << itPrice->first << "| " << "Error: No FX satisfies this date\n";
+			continue;
 		}
 		--itFX;
 		format(itPrice, itFX);
@@ -116,11 +117,9 @@ bool BitcoinExchange::hasRightDateFormat(const_it& itPrice)
 	iss.ignore(std::numeric_limits<std::streamsize>::max(), '-');
 	iss >> month;
 
-	const int padding = 12;
-	
 	if (month < 1 || month > 12)
 	{
-		std::cerr << std::setw(padding) << std::left << itPrice->first << "| " << "Error: Bad Input" << std::endl;
+		std::cerr << std::setw(PADDING) << std::left << itPrice->first << "| " << "Error: Bad Input" << std::endl;
 		return false;
 	}
 
@@ -133,7 +132,7 @@ bool BitcoinExchange::hasRightDateFormat(const_it& itPrice)
 	
 	if (day < 1 || day > daysInMonth[month - 1])
 	{
-		std::cerr << std::setw(padding) << std::left << itPrice->first << "| " << "Error: Bad input\n";
+		std::cerr << std::setw(PADDING) << std::left << itPrice->first << "| " << "Error: Bad input\n";
 		return false;
 	}
 	return true;
@@ -141,14 +140,12 @@ bool BitcoinExchange::hasRightDateFormat(const_it& itPrice)
 
 bool BitcoinExchange::isGoodInput(const_it& itPrice)
 {
-	const int padding = 12;
-	
 	if (!hasRightDateFormat(itPrice))
 		return false;
 	
 	if (itPrice->second < 0 || itPrice->second > 1000)
 	{
-		std::cerr << std::setw(padding) << std::left << itPrice->first << "| " << "Error: Price not within [0, 1000] range\n";
+		std::cerr << std::setw(PADDING) << std::left << itPrice->first << "| " << "Error: Price not within [0,1000] range\n";
 		return false;
 	}
 	

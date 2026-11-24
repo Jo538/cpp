@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:16:05 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 15:39:57 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/24 20:25:05 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ int main(int argc, char** argv)
 	std::string priceFile = argv[1];
 	BitcoinExchange test;
 	
-	test.parseMap(priceFile, BitcoinExchange::PRICE);
-	test.parseMap("data.csv", BitcoinExchange::FX);
+	if (test.parseMap(priceFile, BitcoinExchange::PRICE))
+		return 1;
+	if (test.parseMap("data.csv", BitcoinExchange::FX))
+		return 1;
 
 	test.print();
+	
 	return 0;
 }

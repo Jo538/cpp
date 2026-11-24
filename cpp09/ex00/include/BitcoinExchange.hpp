@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:51:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/24 19:28:58 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/24 20:29:50 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,49 @@
 # include <map>
 
 class BitcoinExchange
-{	
+{
 public:
-	typedef std::multimap<std::string, float> ExchangeMap;
-	typedef ExchangeMap::const_iterator const_it;
-	
+	/* ---------------------------- Types ----------------------------- */
+
+	typedef std::multimap<std::string, float>	ExchangeMap;
+	typedef ExchangeMap::const_iterator			const_it;
+
 	enum Map {PRICE, FX};
+
+	/* ------------------- Orthodox Canonical Form -------------------- */
 
 	BitcoinExchange() {};
 	BitcoinExchange(const BitcoinExchange& other);
 	~BitcoinExchange() {};
 
-	BitcoinExchange& operator=(const BitcoinExchange& other);
+	BitcoinExchange&	operator=(const BitcoinExchange& other);
 
-	void parseMap(const std::string& file, Map type);
-	void parsePair(std::string& line, Map type);
-	void print();
+	/* -------------------------- Interface --------------------------- */
+
+	int	parseMap(const std::string& file, Map type);
+	void	print();
 
 private:
-	ExchangeMap _fx;
-	ExchangeMap _price;
+	/* ----------------------------- Data ----------------------------- */
 
-	bool isGoodInput(const_it& itPrice);
-	bool isLeapYear(const_it& itPrice);
-	bool hasRightDateFormat(const_it& itPrice);
-	void format(const_it& itPrice, const_it& itFX);
-	float product(const_it& itPrice, const_it& itFX) const;
-	
+	ExchangeMap	_fx;
+	ExchangeMap	_price;
+	static const int PADDING = 12;
+
+	/* --------------------------- Parsing ---------------------------- */
+
+	void	parsePair(const std::string& line, Map type);
+
+	/* -------------------------- Validation -------------------------- */
+
+	bool	isGoodInput(const_it& itPrice);
+	bool	isLeapYear(const_it& itPrice);
+	bool	hasRightDateFormat(const_it& itPrice);
+
+	/* --------------------------- Output ----------------------------- */
+
+	void	format(const_it& itPrice, const_it& itFX);
+	double	product(const_it& itPrice, const_it& itFX) const;
 };
-
 
 #endif
