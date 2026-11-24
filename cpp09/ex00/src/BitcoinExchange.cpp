@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 18:25:16 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 16:24:10 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/24 19:04:26 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <sstream>
 #include <algorithm>
 #include <iomanip>
 #include <string>
@@ -89,8 +90,78 @@ void BitcoinExchange::print()
 	
 	for (; itPrice != itePrice; ++itPrice)
 	{
+		if (!isGoodInput(itPrice))
+			continue;
 		itFX = _fx.upper_bound(itPrice->first);
+		if (itFX == _fx.begin())
+		{
+			const int padding = 12;
+			std::cerr << std::setw(padding) << std::left << itPrice->first << "| " << "Error: No FX satisfies this date\n";
+			return ;
+		}
 		--itFX;
 		format(itPrice, itFX);
 	}
+}
+
+bool BitcoinExchange::hasRightDateFormat(const_it& itPrice)
+{
+	std::istringstream iss(itPrice->first);
+	int month;
+	int day;
+
+	iss.ignore(std::numeric_limits<std::streamsize>::max(), '-');
+	iss >> month;
+
+	const int padding = 12;
+	
+	if (month < 1 || month > 12)
+	{
+		std::cerr << std::setw(padding) << std::left << itPrice->first << "| " << "Error: Bad Input" << std::endl;
+		return false;
+	}
+
+	iss.ignore(std::numeric_limits<std::streamsize>::max(), '-');
+	iss >> day;
+
+	int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	if (isLeapYear(itPrice))
+		daysInMonth[1] = 29;
+	
+	if (day < 1 || day > daysInMonth[month - 1])
+	{
+		std::cerr << std::setw(padding) << std::left << itPrice->first << "| " << "Error: Bad input\n";
+		return false;
+	}
+	return true;
+}
+
+bool BitcoinExchange::isGoodInput(const_it& itPrice)
+{
+	if (!hasRightDateFormat(itPrice))
+		return false;
+	
+	if (itPrice->second < 0 || itPrice->second > 1000)
+	{
+		std::cerr << "Error: Price not within [0, 1000] range\n";
+		return false;
+	}
+	
+	return true;
+}
+
+bool BitcoinExchange::isLeapYear(const_it& itPrice)
+{
+	std::istringstream iss(itPrice->first);
+
+	int year;
+	iss >> year;
+
+	if (year % 4 != 0)
+		return false;
+	if (year % 100 != 0)
+		return true;
+	if (year % 400 != 0)
+		return false;
+	return true;
 }

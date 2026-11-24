@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchartie <jchartie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/20 17:51:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/23 16:08:48 by jchartie         ###   ########.fr       */
+/*   Updated: 2026/11/24 18:56:06 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ public:
 	void parseMap(const std::string& file, Map type);
 	void parsePair(std::ifstream& inFile, Map type);
 	void print();
-	void format(const_it& itPrice, const_it& itFX);
 
 private:
 	ExchangeMap _fx;
 	ExchangeMap _price;
 
+	bool isGoodInput(const_it& itPrice);
+	bool isLeapYear(const_it& itPrice);
+	bool hasRightDateFormat(const_it& itPrice);
+	void format(const_it& itPrice, const_it& itFX);
 	float product(const_it& itPrice, const_it& itFX) const;
 	
 };
