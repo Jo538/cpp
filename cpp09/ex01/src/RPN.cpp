@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 13:21:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/25 16:44:18 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/25 17:55:53 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 #include <cstdlib>
 #include "RPN.hpp"
 
-// 1 - --> 1 number and 1 operator or more
-// 1 2 - - --> 2 numbers and 2 operators or more
+// 1000000000000000 --> 1 number and 1 operator or more
 
-void RPN::evaluate(const char c)
+void RPN::evaluate(const char c, int pos)
 {
-	if (!isValidOperation())
+	if (_numbers.size() <= 1)
+		throw std::runtime_error("Error");
+	
+	if (pos % 2 == 1)
 		throw std::runtime_error("Error");
 
 	double right = _numbers.top();
@@ -44,26 +46,61 @@ void RPN::evaluate(const char c)
 	}
 }
 
-bool RPN::isValidOperation() const
+RPN::Type RPN::findType(const char c)
 {
-	if (_numbers.size() == 1)
-		return false;
-	return true;
+	const std::string operators = "+-*/";
+	
+	if (c == ' ')
+		return SPACE;
+	else if (std::isdigit(static_cast<unsigned int>(c)))
+		return NUMBER;
+	else if (operators.find(c) != std::string::npos)
+		return OPERATOR;
+	else
+		return UNKNOWN;
+		
 }
 
-// 1
-void RPN::calculate(const std::string& operation)
+void RPN::pushNumber(const char c, int pos)
+{
+	if (pos % 2 == 1)
+		throw std::runtime_error("Error");
+		
+	errno = 0;
+	double num = std::strtod(&c, NULL);
+	if (errno == ERANGE)
+		throw std::overflow_error("Error");
+
+	if (num < 0 || num > 9)
+		throw std::range_error("Error");
+	
+	_numbers.push(num);
+}
+
+// 1 2 +
+void RPN::calculate(const std::string& suite)
 {
 	const std::string operators = "+-*/";
 
-	for (std::string::size_type i = 0; i < operation.length(); ++i)
+	for (std::string::size_type i = 0; i < suite.length(); ++i)
 	{
-		if (std::isdigit(static_cast<unsigned int>(operation[i])))
-			_numbers.push(std::strtod(&operation[i], NULL));
-		
-		if (operators.find(operation[i]) != std::string::npos)
-			evaluate(operation[i]);
-
+		switch(findType(suite[i]))
+		{
+			case NUMBER:
+				pushNumber(suite[i], i);
+				break;
+			case OPERATOR:
+				evaluate(suite[i], i);
+				break;
+			case SPACE:
+				if (i % 2 == 0)
+					throw std::runtime_error("Error");
+				continue;
+			case UNKNOWN:
+				throw std::runtime_error("Error");
+		}
 	}
+	if (_numbers.size() == 0 || _numbers.size() > 1)
+		throw std::runtime_error("Error");
 	std::cout << _numbers.top() << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 13:16:08 by admin             #+#    #+#             */
-/*   Updated: 2026/11/25 16:43:20 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/25 17:54:47 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ public:
 	RPN& operator=(const RPN& other) {_numbers = other._numbers; return *this;};
 	~RPN() {};
 
-	void calculate(const std::string& operation);
+	void calculate(const std::string& suite);
 
 private:
+	enum Type {NUMBER, OPERATOR, SPACE, UNKNOWN};
+	
 	std::stack<double> _numbers;
 
-	void evaluate(const char c);
-	bool isValidOperation() const;
+	void evaluate(const char c, int pos);
+	void pushNumber(const char c, int pos);
+	static Type findType(const char c);
 };
 
 #endif
