@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 13:21:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/25 16:22:28 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/25 16:44:18 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 #include <cstdlib>
 #include "RPN.hpp"
 
-// 1 2 +
-// Traverse operation 1 character at a time
-// Recognise digit from operator
-// if digit --> push to stack
-// if operator --> pop 2 times --> calculate --> push result to stack
-// Repeat
+// 1 - --> 1 number and 1 operator or more
+// 1 2 - - --> 2 numbers and 2 operators or more
 
 void RPN::evaluate(const char c)
 {
+	if (!isValidOperation())
+		throw std::runtime_error("Error");
+
 	double right = _numbers.top();
 	_numbers.pop();
 	double left = _numbers.top();
@@ -45,6 +44,14 @@ void RPN::evaluate(const char c)
 	}
 }
 
+bool RPN::isValidOperation() const
+{
+	if (_numbers.size() == 1)
+		return false;
+	return true;
+}
+
+// 1
 void RPN::calculate(const std::string& operation)
 {
 	const std::string operators = "+-*/";
@@ -56,6 +63,7 @@ void RPN::calculate(const std::string& operation)
 		
 		if (operators.find(operation[i]) != std::string::npos)
 			evaluate(operation[i]);
+
 	}
 	std::cout << _numbers.top() << std::endl;
 }

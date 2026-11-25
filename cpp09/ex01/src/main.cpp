@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 13:48:00 by admin             #+#    #+#             */
-/*   Updated: 2026/11/25 13:50:42 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/25 16:35:03 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ int main(int argc, char** argv)
 	
 	RPN ops;
 	
-	ops.calculate(operation);
+	try
+	{
+		ops.calculate(operation);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
 	return 0;
 }
