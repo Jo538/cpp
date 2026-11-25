@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 13:16:08 by admin             #+#    #+#             */
-/*   Updated: 2026/11/25 13:37:13 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/25 16:10:23 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ public:
 
 private:
 	std::stack<double> _numbers;
+
+	void evaluate(const char c);
 };
 
 #endif
