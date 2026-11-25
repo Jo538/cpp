@@ -6,16 +6,17 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/25 13:21:38 by admin             #+#    #+#             */
-/*   Updated: 2026/11/25 17:55:53 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/25 18:30:27 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
-#include <cstdlib>
+#include <limits>
+#include <stdexcept>
+#include <cctype>
+#include <iomanip>
 #include "RPN.hpp"
-
-// 1000000000000000 --> 1 number and 1 operator or more
 
 void RPN::evaluate(const char c, int pos)
 {
@@ -26,6 +27,10 @@ void RPN::evaluate(const char c, int pos)
 		throw std::runtime_error("Error");
 
 	double right = _numbers.top();
+	
+	if (c == '/' && right == 0)
+		throw std::runtime_error("Error");
+
 	_numbers.pop();
 	double left = _numbers.top();
 	_numbers.pop();
@@ -52,7 +57,7 @@ RPN::Type RPN::findType(const char c)
 	
 	if (c == ' ')
 		return SPACE;
-	else if (std::isdigit(static_cast<unsigned int>(c)))
+	else if (std::isdigit(static_cast<unsigned char>(c)))
 		return NUMBER;
 	else if (operators.find(c) != std::string::npos)
 		return OPERATOR;
@@ -66,22 +71,13 @@ void RPN::pushNumber(const char c, int pos)
 	if (pos % 2 == 1)
 		throw std::runtime_error("Error");
 		
-	errno = 0;
-	double num = std::strtod(&c, NULL);
-	if (errno == ERANGE)
-		throw std::overflow_error("Error");
-
-	if (num < 0 || num > 9)
-		throw std::range_error("Error");
+	double num = c - '0';
 	
 	_numbers.push(num);
 }
 
-// 1 2 +
 void RPN::calculate(const std::string& suite)
 {
-	const std::string operators = "+-*/";
-
 	for (std::string::size_type i = 0; i < suite.length(); ++i)
 	{
 		switch(findType(suite[i]))
@@ -93,14 +89,15 @@ void RPN::calculate(const std::string& suite)
 				evaluate(suite[i], i);
 				break;
 			case SPACE:
-				if (i % 2 == 0)
+				if (i % 2 == 0 || (i == suite.length() - 1))
 					throw std::runtime_error("Error");
 				continue;
 			case UNKNOWN:
 				throw std::runtime_error("Error");
 		}
 	}
-	if (_numbers.size() == 0 || _numbers.size() > 1)
+	if (_numbers.size() != 1)
 		throw std::runtime_error("Error");
-	std::cout << _numbers.top() << std::endl;
+
+	std::cout << std::setprecision(std::numeric_limits<double>::digits10) << _numbers.top() << std::endl;
 }
