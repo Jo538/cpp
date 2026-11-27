@@ -1,0 +1,8 @@
+1. Pair up: group the numbers two by two, and if the count is odd, set the last number aside as a "leftover".
+2. Compare inside each pair: in every pair, find out which number is the bigger one and which is the smaller one.
+3. Sort the bigger ones recursively: take only the bigger number of each pair and sort those with this same algorithm, so the whole process repeats on a list half as long.
+4. Build the main chain: the sorted bigger numbers form the "main chain", and each smaller number waits in a "pending" list, still linked to its bigger partner.
+5. Insert the first pending number for free: the smaller partner of the smallest number in the main chain goes straight to the front, because it's smaller than everything already there.
+6. Insert the rest of the pending numbers in a special order: put the remaining pending numbers into the main chain one at a time, in an order based on the Jacobsthal numbers (a number sequence) that keeps comparisons to a minimum.
+7. Use binary search for each insertion: find each pending number's spot with binary search, looking only at the part of the chain to the left of its partner, since you already know it's smaller than that partner.
+8. Insert the leftover: if step 1 set a number aside, insert it last with a binary search over the whole chain.
