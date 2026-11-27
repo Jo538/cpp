@@ -6,15 +6,13 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 12:54:28 by admin             #+#    #+#             */
-/*   Updated: 2026/11/27 13:26:41 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/27 13:53:51 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include "PMergeMe.hpp"
-
-// [4, 2, 3]
 
 int main(int argc, char** argv)
 {
@@ -35,6 +33,12 @@ int main(int argc, char** argv)
 	
 	for (size_t i = 0; i < nums.size(); ++i)
 		std::cout << nums[i] << " ";
+	std::cout << std::endl;
+
+	const PMergeMe::Suite& winners = suite.mySort();
+	
+	for (size_t i = 0; i < winners.size(); ++i)
+		std::cout << winners[i] << " ";
 	std::cout << std::endl;
 	return 0;
 }

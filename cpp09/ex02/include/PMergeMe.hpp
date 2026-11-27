@@ -6,7 +6,7 @@
 /*   By: admin <admin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 12:47:10 by admin             #+#    #+#             */
-/*   Updated: 2026/11/27 13:18:52 by admin            ###   ########.fr       */
+/*   Updated: 2026/11/27 14:05:55 by admin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,16 @@ public:
 	typedef std::vector<unsigned int> Suite;
 	
 	const Suite& getNumbers();
+	const Suite mySort();
 
 private:
 	Suite _numbers;
+
+	typedef std::vector<std::pair<unsigned int, unsigned int> > Pairs;
+
+	const Pairs pairNums() const;
+	static const Suite findWinners(const Pairs& pairNums);
+	static const Suite rankWinners(const Suite& winners);
 
 };
 
